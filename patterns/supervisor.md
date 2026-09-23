@@ -22,6 +22,17 @@ path: /patterns/supervisor.md
 pattern: supervisor
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: helped
+    url: https://www.anthropic.com/engineering/multi-agent-research-system
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2411.04468
+  - direction: mixed
+    url: https://arxiv.org/abs/2512.08296
+  - direction: helped
+    url: https://arxiv.org/abs/2412.05449
+  - direction: hurt
+    url: https://arxiv.org/abs/2503.13657
 qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/building-effective-agents
@@ -62,6 +73,33 @@ workload. It is not a finding, and this service has not tested it.
 - Subordinates report upward as summaries, so the supervisor sees a tidier run than the one that happened.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Helped** — Anthropic reports that its lead-agent-plus-subagents research system substantially outperformed a single agent using the stronger lead model on its internal research evaluation.
+  Compared against: A single agent using the same model as the lead agent. Domain: Open-ended web research.
+  Caveat: Vendor self-report on an unpublished internal evaluation with no public replication.
+  Source: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), Anthropic (Hadfield, Zhang, Lien, Scholz, Fox, Ford), 2025-06-13.
+- **No clear gain** — The authors report that their orchestrator-led team of specialist agents achieved performance statistically comparable to, not better than, state-of-the-art systems on general agentic benchmarks, and trailed the top entries on one web benchmark.
+  Compared against: Published state-of-the-art agent systems on each benchmark. Domain: Generalist web, file and coding tasks. Benchmarks: GAIA, AssistantBench, WebArena.
+  Caveat: First-party evaluation by the system's builders against heterogeneous published baselines rather than matched single-agent controls.
+  Source: [Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks](https://arxiv.org/abs/2411.04468), Fourney et al. (Microsoft Research), 2024-11-07.
+- **Mixed** — The authors report that centralized orchestration strongly helped on decomposable financial reasoning but degraded performance on sequential planning, while containing error amplification far better than independent agents at a large token overhead.
+  Compared against: Single-agent systems and independent, decentralized and hybrid multi-agent architectures. Domain: Agentic benchmarks spanning finance, web browsing, planning, workplace, software and terminal tasks. Benchmarks: Finance-Agent, PlanCraft, BrowseComp-Plus, Workbench, SWE-bench Verified, Terminal-Bench.
+  Caveat: Results depend on the chosen model families and benchmark set, and the fitted predictive model explains only part of the variance.
+  Source: [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), Kim et al., 2025-12-09.
+- **Helped** — The authors report that multi-agent collaboration with a supervisor agent raised goal success over single-agent setups and that a routing mode reduced latency.
+  Compared against: Single-agent approaches. Domain: Enterprise assistant scenarios.
+  Caveat: Vendor technical report on handcrafted scenarios from a few enterprise domains, evaluated on its own product.
+  Source: [Towards Effective GenAI Multi-Agent Collaboration: Design and Evaluation for Enterprise Applications](https://arxiv.org/abs/2412.05449), Shu et al. (AWS), 2024-12-06.
+- **Hurt** — The authors report that popular multi-agent frameworks, including orchestrator-led ones, fail often, with failures clustering into system design, inter-agent misalignment and task verification problems rather than only underlying model weakness.
+  Compared against: Expected task success of the same frameworks. Domain: Coding, math and general agent tasks across several open-source multi-agent frameworks. Benchmarks: MAST-Data.
+  Caveat: A failure taxonomy built from annotated traces, not a controlled comparison of topologies against a single-agent baseline.
+  Source: [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657), Cemri et al., 2025-03-17.
 
 ## Sources that describe it
 

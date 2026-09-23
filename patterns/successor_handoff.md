@@ -19,6 +19,17 @@ path: /patterns/successor_handoff.md
 pattern: successor_handoff
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: mixed
+    url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+  - direction: helped
+    url: https://claude.com/blog/context-management
+  - direction: mixed
+    url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+  - direction: helped
+    url: https://arxiv.org/abs/2310.08560
+  - direction: mixed
+    url: https://arxiv.org/abs/2505.06120
 qualifying_evidence: []
 references: []
 schema_version: v0.1
@@ -55,6 +66,33 @@ workload. It is not a finding, and this service has not tested it.
 - Nothing in a handover separates a fact from an assumption unless the format forces it.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Mixed** — Anthropic reports that compaction alone was not enough for a frontier coding agent working across many context windows, and that an initializer agent plus structured progress notes for each new session addressed failures like premature completion.
+  Compared against: A coding agent looping across context windows with compaction only. Domain: Long-running software development.
+  Caveat: Engineering guidance from qualitative experience without a controlled benchmark.
+  Source: [Anthropic Engineering: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), Justin Young et al. (Anthropic), 2025-11-26.
+- **Helped** — Anthropic reports that combining a memory tool with context editing improved performance on an internal agentic search evaluation and let long workflows finish that otherwise failed from context exhaustion.
+  Compared against: The same agent without context management features. Domain: Agentic web search.
+  Caveat: Vendor-run internal evaluation with no public benchmark.
+  Source: [Claude blog: Managing context on the Claude Developer Platform](https://claude.com/blog/context-management), Anthropic, 2025-09-29.
+- **Mixed** — Anthropic describes compaction, structured note-taking and subagents returning condensed summaries as techniques for carrying work across context limits, motivated by context rot.
+  Compared against: Keeping all history in one context window. Domain: Long-horizon agent tasks.
+  Caveat: Guidance, not a result; the post provides no quantitative comparison.
+  Source: [Anthropic Engineering: Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Rajasekaran, Dixon, Ryan, Hadfield (Anthropic), 2025-09-29.
+- **Helped** — MemGPT reports that paging information between a limited context window and external memory tiers substantially outperformed fixed-context baselines at recalling facts from earlier sessions.
+  Compared against: Fixed-context LLMs without memory management. Domain: Multi-session chat and long document analysis. Benchmarks: Deep Memory Retrieval.
+  Caveat: A single agent managing its own memory rather than a handoff between agents, evaluated on older models.
+  Source: [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560), Packer et al., 2023-10-12.
+- **Mixed** — Laban and colleagues report that LLMs degrade sharply when information arrives across many turns, that recap strategies only partly help, and suggest consolidating requirements into a fresh conversation.
+  Compared against: Single-turn fully specified instructions. Domain: Multi-turn generation tasks.
+  Caveat: Studies user-to-model conversation rather than agent-to-agent handoff; the fresh-conversation advice is a recommendation, not a measured intervention.
+  Source: [LLMs Get Lost In Multi-Turn Conversation](https://arxiv.org/abs/2505.06120), Laban et al., 2025-05-09.
 
 ## Can this deployment execute it
 

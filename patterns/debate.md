@@ -18,6 +18,19 @@ path: /patterns/debate.md
 pattern: debate
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: helped
+    url: https://arxiv.org/abs/2305.14325
+  - direction: helped
+    url: https://arxiv.org/abs/2305.19118
+  - direction: helped
+    url: https://arxiv.org/abs/2402.06782
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2311.17371
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2508.17536
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2502.08788
 qualifying_evidence: []
 references:
   - https://arxiv.org/abs/2305.14325
@@ -57,6 +70,37 @@ workload. It is not a finding, and this service has not tested it.
 - The judge is the whole result and usually the least examined role.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Helped** — The authors report that multiple model instances debating over several rounds improved mathematical and strategic reasoning and reduced hallucinated facts compared with a single model.
+  Compared against: A single model instance and single-model reflection. Domain: Arithmetic, grade-school math, strategy and factual biographies. Benchmarks: GSM8K, MMLU.
+  Caveat: Uses earlier models and does not match compute against self-consistency sampling with the same number of calls.
+  Source: [Improving Factuality and Reasoning in Language Models through Multiagent Debate](https://arxiv.org/abs/2305.14325), Du et al., 2023-05-23.
+- **Helped** — The authors report that a judged tit-for-tat debate between agents countered the degeneration of thought seen in self-reflection and improved results, while noting a judge may be unfair when agents use different models.
+  Compared against: Self-reflection with a single model. Domain: Commonsense machine translation and counter-intuitive arithmetic reasoning. Benchmarks: CIAR.
+  Caveat: Evaluated on two narrow challenge datasets and sensitive to debate settings such as the level of disagreement.
+  Source: [Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate](https://arxiv.org/abs/2305.19118), Liang et al., 2023-05-30.
+- **Helped** — The authors report that debate between expert models consistently helped weaker model judges and humans pick correct answers, and that more persuasive debaters further improved judge accuracy.
+  Compared against: Naive baselines without debate, such as a single consultant. Domain: Reading comprehension with information asymmetry. Benchmarks: QuALITY.
+  Caveat: Tests a scalable-oversight setting with hidden information, not general accuracy improvement for a solver.
+  Source: [Debating with More Persuasive LLMs Leads to More Truthful Answers](https://arxiv.org/abs/2402.06782), Khan et al., 2024-02-09.
+- **No clear gain** — The authors report that multi-agent debate systems in their current form did not reliably outperform self-consistency and multi-path ensembling, though some became competitive after hyperparameter tuning.
+  Compared against: Self-consistency and ensembling over multiple reasoning paths. Domain: Question answering across popular research datasets.
+  Caveat: Debate methods proved sensitive to hyperparameters, so conclusions may shift with tuning effort.
+  Source: [Should we be going MAD? A Look at Multi-Agent Debate Strategies for LLMs](https://arxiv.org/abs/2311.17371), Smit et al., 2023-11-29.
+- **No clear gain** — The authors report that majority voting alone accounts for most of the gains usually attributed to multi-agent debate, and argue theoretically that debate by itself does not improve expected correctness.
+  Compared against: Majority voting over independent agent answers. Domain: Natural language processing benchmarks.
+  Caveat: The theoretical model idealizes the debate process, and the authors show targeted interventions can make debate more effective.
+  Source: [Debate or Vote: Which Yields Better Decisions in Multi-Agent Large Language Models?](https://arxiv.org/abs/2508.17536), Choi et al., 2025-08-24.
+- **No clear gain** — The authors report that multi-agent debate often failed to outperform chain-of-thought and self-consistency despite using more inference compute, and that using heterogeneous models improved debate frameworks.
+  Compared against: Single-agent chain-of-thought and self-consistency. Domain: Reasoning, knowledge and coding question answering.
+  Caveat: Results are for the debate methods and base models evaluated, and heterogeneity was proposed as a remedy rather than exhaustively tested.
+  Source: [Stop Overvaluing Multi-Agent Debate: We Must Rethink Evaluation and Embrace Model Heterogeneity](https://arxiv.org/abs/2502.08788), Zhang et al., 2025-02-12.
 
 ## Sources that describe it
 

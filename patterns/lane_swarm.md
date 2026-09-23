@@ -20,6 +20,13 @@ path: /patterns/lane_swarm.md
 pattern: lane_swarm
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: mixed
+    url: https://arxiv.org/abs/2406.07155
+  - direction: mixed
+    url: https://arxiv.org/abs/2308.10848
+  - direction: mixed
+    url: https://arxiv.org/abs/2304.03442
 qualifying_evidence: []
 references: []
 schema_version: v0.1
@@ -59,6 +66,25 @@ workload. It is not a finding, and this service has not tested it.
 - Control conventions invented by the participants are enforced by nothing, so they are followed unevenly.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Mixed** — The authors report that organizing up to over a thousand agents in a directed acyclic graph yields performance that grows logistically with agent count, with irregular topologies outperforming regular ones.
+  Compared against: Smaller agent networks and regular topologies such as chains and meshes. Domain: Reasoning, code generation, software development and constrained text generation. Benchmarks: MMLU, HumanEval, SRDD, CommonGen-Hard.
+  Caveat: The authors report most topologies saturate at around a hundred agents, that dense interaction can overload agents, and that context cost grows quadratically without their memory control.
+  Source: [Scaling LLM-based multi-agent collaboration, MacNet (Qian et al.)](https://arxiv.org/abs/2406.07155), Chen Qian et al., 2024-06-11.
+- **Mixed** — The authors report that dynamically composed agent groups can outperform a single agent, but also document cases where group discussion hurt a weaker model and negative emergent behaviors such as destructive actions.
+  Compared against: Single-agent solo setups. Domain: Reasoning, coding, tool use and embodied Minecraft tasks. Benchmarks: FED, Commongen-Challenge, MGSM, Logic Grid Puzzles, HumanEval.
+  Caveat: Groups in these experiments are small, so the results say little about large swarms.
+  Source: [AgentVerse: multi-agent collaboration and emergent behaviors (Chen et al.)](https://arxiv.org/abs/2308.10848), Weize Chen et al., 2023-08-21.
+- **Mixed** — The authors report that a sandbox society of LLM agents with memory, reflection and planning produced believable individual and emergent social behavior, such as spontaneously organizing a party.
+  Compared against: Ablations of the agent architecture and human-authored behavior. Domain: Simulated social behavior in a sandbox town.
+  Caveat: This is a behavioral simulation judged on believability, not a measure of task performance from adding agents.
+  Source: [Generative Agents: interactive simulacra of human behavior (Park et al.)](https://arxiv.org/abs/2304.03442), Joon Sung Park et al., 2023-04-07.
 
 ## Can this deployment execute it
 

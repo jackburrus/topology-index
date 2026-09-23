@@ -19,6 +19,19 @@ path: /patterns/fan_out.md
 pattern: fan_out
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: helped
+    url: https://arxiv.org/abs/2203.11171
+  - direction: helped
+    url: https://arxiv.org/abs/2402.05120
+  - direction: mixed
+    url: https://arxiv.org/abs/2407.21787
+  - direction: mixed
+    url: https://arxiv.org/abs/2403.02419
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2411.17501
+  - direction: helped
+    url: https://arxiv.org/abs/2110.14168
 qualifying_evidence: []
 references:
   - https://arxiv.org/abs/2203.11171
@@ -58,6 +71,37 @@ workload. It is not a finding, and this service has not tested it.
 - Workers that are not fully isolated can duplicate side effects on the same target.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Helped** — The authors report that sampling diverse chain-of-thought reasoning paths and taking the most consistent answer by vote substantially improves accuracy over a single greedy chain.
+  Compared against: Single greedy-decoded chain-of-thought. Domain: Arithmetic and commonsense reasoning. Benchmarks: GSM8K, SVAMP, AQuA, StrategyQA, ARC-Challenge.
+  Caveat: Voting needs a short answer that can be matched across samples, so it does not directly apply to open-ended outputs.
+  Source: [Self-Consistency Improves Chain of Thought Reasoning in Language Models (Wang et al.)](https://arxiv.org/abs/2203.11171), Xuezhi Wang et al., 2022-03-21.
+- **Helped** — The authors report that a simple sample-and-vote method lets performance scale with the number of agents instantiated, with larger gains on harder tasks relative to the model.
+  Compared against: Single LLM call and more elaborate prompting or multi-agent methods. Domain: Reasoning and code generation. Benchmarks: GSM8K, MATH, MMLU, Chess State Tracking, HumanEval.
+  Caveat: The authors note token cost grows in proportion to agent count and gains taper off at the highest difficulty levels they tested.
+  Source: [More Agents Is All You Need (Li et al.)](https://arxiv.org/abs/2402.05120), Junyou Li et al., 2024-02-03.
+- **Mixed** — The authors report that coverage from repeated sampling keeps rising with sample count and converts into real gains where answers can be automatically verified, but majority voting and reward models plateau and fail to keep pace where no verifier exists.
+  Compared against: Single-sample attempts. Domain: Math, formal proofs, competitive programming and software engineering. Benchmarks: GSM8K, MATH, MiniF2F, CodeContests, SWE-bench Lite.
+  Caveat: Most of the upside is coverage, which only becomes accuracy when a reliable automatic verifier can pick the correct sample.
+  Source: [Large Language Monkeys: scaling inference compute with repeated sampling (Brown et al.)](https://arxiv.org/abs/2407.21787), Bradley Brown et al., 2024-07-31.
+- **Mixed** — The authors report that accuracy of majority-vote and filter-then-vote systems can first increase and then decrease as the number of LLM calls grows, because extra calls help easy queries but hurt hard ones.
+  Compared against: Vote and Filter-Vote systems at smaller call counts. Domain: Multiple-choice question answering and fact verification. Benchmarks: MMLU Physics, TruthfulQA, GPQA, AVeriTeC.
+  Caveat: The analysis covers only simple voting aggregators on multiple-choice style tasks, not richer selection or verification schemes.
+  Source: [Are More LLM Calls All You Need? Scaling laws of compound inference systems (Chen et al.)](https://arxiv.org/abs/2403.02419), Lingjiao Chen et al., 2024-03-04.
+- **No clear gain** — The authors report that when verifiers such as unit tests are imperfect, resampling cannot remove false positives, so weaker models cannot reach a strong model's single-attempt accuracy and the optimal number of attempts is small.
+  Compared against: A single call to a stronger model. Domain: Code generation with unit-test verification. Benchmarks: HumanEval, HumanEval+, MBPP, MBPP+.
+  Caveat: The study is limited to coding benchmarks where the gap between weak and full test suites can be measured.
+  Source: [The Limits of Inference Scaling Through Resampling (Stroebl et al.)](https://arxiv.org/abs/2411.17501), Benedikt Stroebl et al., 2024-11-26.
+- **Helped** — The authors report that generating many candidate solutions and selecting the one ranked highest by a trained verifier substantially improves accuracy and scales better with data than fine-tuning alone.
+  Compared against: Fine-tuned model producing a single answer. Domain: Grade-school math word problems. Benchmarks: GSM8K.
+  Caveat: The gain depends on training a task-specific verifier, which requires labelled correct and incorrect solutions.
+  Source: [Training Verifiers to Solve Math Word Problems (Cobbe et al., OpenAI)](https://arxiv.org/abs/2110.14168), Karl Cobbe et al., 2021-10-27.
 
 ## Sources that describe it
 

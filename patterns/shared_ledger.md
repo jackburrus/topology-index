@@ -19,6 +19,13 @@ path: /patterns/shared_ledger.md
 pattern: shared_ledger
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: helped
+    url: https://arxiv.org/abs/2411.04468
+  - direction: helped
+    url: https://arxiv.org/abs/2605.29313
+  - direction: mixed
+    url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
 qualifying_evidence: []
 references: []
 schema_version: v0.1
@@ -56,6 +63,25 @@ workload. It is not a finding, and this service has not tested it.
 - Without an authenticated writer, an entry proves only that somebody could write.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Helped** — The authors report that Magentic-One's orchestrator, which maintains a task ledger of facts and plans and a progress ledger checked each step, performed markedly better than a variant with both ledgers removed.
+  Compared against: The same agents coordinated by a basic group chat without ledgers. Domain: Generalist agentic tasks. Benchmarks: GAIA.
+  Caveat: The ablation removes planning, loop detection and explicit instructions along with the ledgers, so the ledger's own contribution is not isolated.
+  Source: [Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks](https://arxiv.org/abs/2411.04468), Fourney et al. (Microsoft Research), 2024-11-07.
+- **Helped** — The authors report that coordinating agents through validated, attributable patch mutations to a shared structured state achieved higher success with far fewer tokens per solved task than graph-based and dialogue-based framework baselines.
+  Compared against: LangGraph and Flock multi-agent baselines. Domain: Embodied household tasks. Benchmarks: ALFWorld.
+  Caveat: Recent single-benchmark result from the proposing authors that has not been independently replicated.
+  Source: [PatchBoard: Schema-Grounded State Mutation for Reliable and Auditable LLM Multi-Agent Collaboration](https://arxiv.org/abs/2605.29313), Zhang et al., 2026-05-28.
+- **Mixed** — Anthropic reports that a progress log, a feature list and git history shared across successive agent sessions helped long-running coding agents resume work, but agents still declared victory early or marked features complete without end-to-end testing.
+  Compared against: Agents working without persistent progress artifacts. Domain: Long-running software development.
+  Caveat: Vendor engineering report with qualitative observations only and no measured comparison.
+  Source: [Anthropic Engineering: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), Anthropic (Justin Young), 2025-11-26.
 
 ## Can this deployment execute it
 

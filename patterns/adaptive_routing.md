@@ -20,6 +20,15 @@ path: /patterns/adaptive_routing.md
 pattern: adaptive_routing
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: helped
+    url: https://arxiv.org/abs/2406.18665
+  - direction: helped
+    url: https://arxiv.org/abs/2305.05176
+  - direction: helped
+    url: https://arxiv.org/abs/2502.11133
+  - direction: no_clear_gain
+    url: https://arxiv.org/abs/2505.12601
 qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/building-effective-agents
@@ -57,6 +66,29 @@ workload. It is not a finding, and this service has not tested it.
 - A route chosen from conditions nobody recorded cannot be reproduced, so two runs of “the same” configuration are not the same configuration.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Helped** — RouteLLM reports that learned routers choosing between a strong and a weak model substantially reduced cost without compromising response quality and transferred when the model pair changed.
+  Compared against: Always using the strong model. Domain: General chat, knowledge and math questions. Benchmarks: MT Bench, MMLU, GSM8K.
+  Caveat: Routes between models for single queries rather than between agents, and gains vary by benchmark.
+  Source: [RouteLLM: Learning to Route LLMs with Preference Data](https://arxiv.org/abs/2406.18665), Ong et al., 2024-06-26.
+- **Helped** — FrugalGPT reports that a learned cascade over LLM APIs could match the best single model at a small fraction of the cost or improve accuracy at equal cost.
+  Compared against: The best individual LLM API. Domain: Classification and question answering tasks.
+  Caveat: Evaluated on older model APIs and pricing, and cascades are a sequential form of routing.
+  Source: [FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance](https://arxiv.org/abs/2305.05176), Chen, Zaharia, Zou, 2023-05-09.
+- **Helped** — MasRouter reports that jointly routing collaboration mode, roles and LLMs in a multi-agent system improved accuracy and reduced overhead versus prior methods.
+  Compared against: Prior multi-agent routing and system design methods. Domain: Code generation, math and reasoning. Benchmarks: MBPP, HumanEval.
+  Caveat: Author-run comparison with modest accuracy gains.
+  Source: [MasRouter: Learning to Route LLMs for Multi-Agent Systems](https://arxiv.org/abs/2502.11133), Yue et al., 2025-02-16.
+- **No clear gain** — Li reports that a well-tuned k-nearest-neighbors router matches and often beats complex learned routers.
+  Compared against: State-of-the-art learned routers. Domain: Model routing across diverse text and multimodal tasks.
+  Caveat: Addresses router complexity rather than whether routing beats a single strong model.
+  Source: [Rethinking Predictive Modeling for LLM Routing: When Simple kNN Beats Complex Learned Routers](https://arxiv.org/abs/2505.12601), Yang Li, 2025-05-19.
 
 ## Sources that describe it
 

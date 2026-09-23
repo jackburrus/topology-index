@@ -129,6 +129,31 @@ single-agent configuration, not a ranking: nothing in this table has been measur
 Copyable starting points that declare some of these arrangements are at
 [/starters/index.md](/starters/index.md).
 
+## What research says about multi-agent systems in general
+
+Attributed and stated without figures; unfavourable results are included on purpose.
+
+- **No clear gain** — Cemri and colleagues note that multi-agent performance gains on popular benchmarks are often minimal and build a failure taxonomy spanning system design, inter-agent misalignment and task verification.
+  Compared against: Single-agent and simpler baselines on popular benchmarks. Domain: Multi-agent frameworks across coding, math and general tasks. Benchmarks: MAST-Data.
+  Caveat: The taxonomy characterizes failures rather than measuring a single head-to-head gain.
+  Source: [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657), Cemri et al., 2025-03-17.
+- **No clear gain** — Wang and colleagues report that a single agent with strong prompts achieves almost the same performance as the best multi-agent discussion, which wins only when no demonstrations are given.
+  Compared against: A single agent with strong prompts and demonstrations. Domain: Reasoning tasks.
+  Caveat: Covers discussion-style multi-agent setups, not tool-using or parallel agent systems.
+  Source: [Rethinking the Bounds of LLM Reasoning: Are Multi-Agent Discussions the Key?](https://arxiv.org/abs/2402.18272), Wang et al., 2024-02-28.
+- **No clear gain** — Smit and colleagues report that multi-agent debate does not reliably outperform self-consistency and ensembling and is more sensitive to hyperparameters.
+  Compared against: Self-consistency and ensembling prompting strategies. Domain: Question answering including medical.
+  Caveat: Tuning agent agreement levels let some debate systems surpass other protocols, so results depend on configuration.
+  Source: [Should we be going MAD? A Look at Multi-Agent Debate Strategies for LLMs](https://arxiv.org/abs/2311.17371), Smit et al., 2023-11-29.
+- **Mixed** — Kim and colleagues report that multi-agent coordination ranges from large gains on decomposable tasks to large losses on sequential planning, with diminishing or negative returns once the single agent is already strong and higher overhead on tool-heavy tasks.
+  Compared against: A single agent under matched tools, prompts and compute. Domain: Agentic benchmarks including finance, planning and tool use.
+  Caveat: Controlled study across a fixed set of architectures and model families; the predictive model explains only part of the variance.
+  Source: [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), Kim et al., 2025-12-09.
+- **Mixed** — Anthropic advises finding the simplest solution possible and adding multi-step agentic systems only when simpler solutions fall short.
+  Compared against: Simple prompts and workflows. Domain: General LLM application design.
+  Caveat: Vendor guidance, not an experimental result.
+  Source: [Anthropic: Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents), Erik S., Barry Zhang (Anthropic), 2024-12-19.
+
 ## How evidence works here
 
 A pattern names how work is organized, never how well that works. Evidence in this service

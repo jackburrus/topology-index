@@ -19,6 +19,13 @@ path: /patterns/signed_coordination.md
 pattern: signed_coordination
 pattern_index: /patterns/index.md
 product_api_version: v1
+published_findings:
+  - direction: mixed
+    url: https://arxiv.org/abs/2410.07283
+  - direction: hurt
+    url: https://arxiv.org/abs/2502.14847
+  - direction: hurt
+    url: https://arxiv.org/abs/2503.12188
 qualifying_evidence: []
 references: []
 schema_version: v0.1
@@ -56,6 +63,25 @@ workload. It is not a finding, and this service has not tested it.
 - A reader can cite a signature it never verified; the record below reports exactly that.
 
 These are things to watch for, not outcomes anyone measured here.
+
+## What published studies found
+
+Attributed to each source and stated without figures, because a number from one
+configuration reads as a result for the pattern. Unfavourable results are included on
+purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+
+- **Mixed** — Lee and Tiwari report that malicious prompts can self-replicate across interconnected agents even when agents do not share all communications, and that marking message provenance with LLM Tagging plus existing safeguards significantly reduced spread.
+  Compared against: Multi-agent systems without provenance tagging. Domain: Multi-agent application security.
+  Caveat: LLM Tagging is a prompt-level label, not cryptographic signing, and works only in combination with other safeguards.
+  Source: [Prompt Infection: LLM-to-LLM Prompt Injection within Multi-Agent Systems](https://arxiv.org/abs/2410.07283), Lee, Tiwari, 2024-10-09.
+- **Hurt** — He and colleagues report that an adversary who only intercepts and manipulates inter-agent messages can compromise entire multi-agent systems across various frameworks and communication structures.
+  Compared against: Multi-agent systems with unprotected inter-agent messages. Domain: Multi-agent application security.
+  Caveat: Attack study that motivates message integrity protection but does not evaluate signing as a defense.
+  Source: [Red-Teaming LLM Multi-Agent Systems via Communication Attacks](https://arxiv.org/abs/2502.14847), He et al., 2025-02-20.
+- **Hurt** — Triedman and colleagues report that adversarial web content can hijack control flow in multi-agent orchestrators to execute arbitrary code, even when individual agents resist prompt injection.
+  Compared against: Multi-agent orchestrators without system-level trust models. Domain: Multi-agent application security.
+  Caveat: Attack study; it calls for trust and security models but does not test authenticated messaging.
+  Source: [Multi-Agent Systems Execute Arbitrary Malicious Code](https://arxiv.org/abs/2503.12188), Triedman, Jha, Shmatikov, 2025-03-15.
 
 ## Can this deployment execute it
 
