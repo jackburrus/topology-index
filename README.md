@@ -1,3 +1,5 @@
+<img src="assets/logo.svg" alt="Topology Index logo" width="96" height="96">
+
 # Topology Index — multi-agent topology patterns for AI agents
 
 A reference for choosing how to organize work across LLM agents: the multi-agent **topologies**

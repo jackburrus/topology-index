@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Topology Index">
+  <rect width="512" height="512" rx="112" fill="#0E1116"/>
+  <g stroke="#E8ECF2" stroke-opacity="0.55" stroke-width="22" stroke-linecap="round">
+    <line x1="256" y1="160" x2="136" y2="352"/>
+    <line x1="256" y1="160" x2="256" y2="352"/>
+    <line x1="256" y1="160" x2="376" y2="352"/>
+    <line x1="136" y1="352" x2="376" y2="352"/>
+  </g>
+  <circle cx="256" cy="160" r="54" fill="#6EE7B7"/>
+  <circle cx="136" cy="352" r="40" fill="#E8ECF2"/>
+  <circle cx="256" cy="352" r="40" fill="#E8ECF2"/>
+  <circle cx="376" cy="352" r="40" fill="#E8ECF2"/>
+</svg>
