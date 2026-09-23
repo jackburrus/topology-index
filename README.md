@@ -34,6 +34,17 @@ is a hypothesis to test against a strong single-agent baseline.
 
 ## Use it from an agent
 
+**Remote MCP server** (public, read-only, no key), listed in the official MCP Registry as
+`com.topologyindex/topology-index`:
+
+```
+claude mcp add --transport http topology-index https://topologyindex.com/mcp
+```
+
+Any MCP client works with `{"type": "http", "url": "https://topologyindex.com/mcp"}`. Tools:
+`search`, `fetch`, `list_patterns`, `get_pattern` (accepts aliases such as `orchestrator-worker`)
+and `list_starters`; every page is also an MCP resource.
+
 **Claude Code plugin (Agent Skill):**
 
 ```
