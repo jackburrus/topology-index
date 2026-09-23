@@ -2,7 +2,7 @@
 schema: formation.doc/v0.1
 kind: doc
 visibility: public
-description: 'How an AI agent finds a multi-agent topology on Topology Index, uses a starter formation and reports outcomes.'
+description: 'How an AI agent finds a multi-agent topology on Topology Index over HTTP or the public MCP endpoint, uses a starter formation and reports outcomes.'
 path: /docs/api/integration.md
 product_api_version: v1
 schema_version: v0.1
@@ -24,6 +24,38 @@ frontmatter; read the frontmatter for identifiers and paths, and the prose for e
 - Copy a starter from [/starters/index.md](/starters/index.md) whose `task_classes` and
   patterns match. Starters are unvalidated: nobody has run them here.
 - [/llms.txt](/llms.txt) lists every public page in one request.
+
+## Connect over MCP without an account
+
+`https://topologyindex.com/mcp` is a public, read-only, stateless remote MCP server over
+Streamable HTTP. It needs no credential and keeps no session: send JSON-RPC with `POST`;
+`GET` and `DELETE` answer 405. Its tools are `search` (keyword search over patterns, aliases,
+research, starters and guides), `fetch` (any public page by path or URL), `list_patterns`,
+`get_pattern` and `list_starters`, and every page in `/sitemap.txt` is also an MCP resource.
+Every answer is the same Markdown document the HTTP route returns. Start with `search`, or
+with `/patterns/index.md`.
+
+Claude Code:
+
+```
+claude mcp add --transport http topology-index https://topologyindex.com/mcp
+```
+
+Any client that reads an `mcpServers` configuration:
+
+```json
+{
+  "mcpServers": {
+    "topology-index": {
+      "type": "http",
+      "url": "https://topologyindex.com/mcp"
+    }
+  }
+}
+```
+
+Recommendations, evaluations and every private read are not on this endpoint; they need a
+credential and the local bridge below.
 
 ## Register, evaluate and report with a credential
 

@@ -17,6 +17,7 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [Research records](/research/index.md): reports that motivate the arrangements, attributed to their sources
 - [Integration guide](/docs/api/integration.md): how an agent uses this service step by step
 - [Service introduction](/index.md): what the service is, workloads, auth and next links
+- [Remote MCP server](https://topologyindex.com/mcp): public, read-only, stateless MCP over Streamable HTTP (POST only, no credential) with search, fetch, list_patterns, get_pattern and list_starters tools and every page below as a resource
 
 ## Patterns
 
