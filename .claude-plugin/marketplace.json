@@ -1,0 +1,11 @@
+{
+  "name": "topology-index",
+  "owner": { "name": "Topology Index", "url": "https://topologyindex.com" },
+  "plugins": [
+    {
+      "name": "topology-index",
+      "source": "./",
+      "description": "Choose a multi-agent topology for a task using the Topology Index reference."
+    }
+  ]
+}

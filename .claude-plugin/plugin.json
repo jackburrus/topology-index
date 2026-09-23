@@ -1,0 +1,9 @@
+{
+  "name": "topology-index",
+  "version": "1.0.0",
+  "description": "Choose a multi-agent topology (orchestrator-worker, planner-executor, evaluator-optimizer, map-reduce, router, debate, council, swarm) using the Topology Index reference.",
+  "homepage": "https://topologyindex.com",
+  "repository": "https://github.com/jackburrus/topology-index",
+  "license": "CC-BY-4.0",
+  "keywords": ["multi-agent", "agent-orchestration", "topology", "agent-skills"]
+}

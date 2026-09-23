@@ -1,0 +1,83 @@
+# Topology Index
+
+> Reference for choosing a multi-agent LLM topology: the orchestration patterns agents are
+> organized into (orchestrator-worker, planner-executor, evaluator-optimizer, map-reduce,
+> fan-out, router, debate, council, blackboard, swarm, handoff), with definitions, aliases,
+> failure modes, primary sources and copyable starter configurations. Raw Markdown with typed
+> frontmatter; no HTML.
+
+A pattern is one building block, a topology is the whole arrangement for a task, and a
+formation is a versioned `FORMATION.md` file that declares a topology. Nothing here ranks
+patterns: evidence attaches to a complete configuration, and none is published yet.
+
+## Start here
+
+- [Pattern catalogue and decision guide](/patterns/index.md): every pattern with aliases, and a table for choosing one by task shape
+- [Starter formations](/starters/index.md): unvalidated, unsigned formations to copy and register privately
+- [Research records](/research/index.md): reports that motivate the arrangements, attributed to their sources
+- [Integration guide](/docs/api/integration.md): how an agent uses this service step by step
+- [Service introduction](/index.md): what the service is, workloads, auth and next links
+
+## Patterns
+
+- [single_agent (single-agent baseline)](/patterns/single_agent.md): One agent works the task alone, with no second role and no shared state.
+- [fan_out (best-of-N sampling)](/patterns/fan_out.md): Several workers attempt the same task at once and one result is selected.
+- [map_reduce (scatter-gather)](/patterns/map_reduce.md): The task is split into parts, worked in parallel, and the parts are combined.
+- [independent_workers (embarrassingly parallel agents)](/patterns/independent_workers.md): Separate agents work separate tasks at the same time and never communicate.
+- [lane_swarm (agent swarm)](/patterns/lane_swarm.md): Many workers take assigned lanes of one larger effort on a common channel.
+- [supervisor (orchestrator-worker)](/patterns/supervisor.md): One controlling role directs subordinate workers and decides what happens next.
+- [planner_worker (planner-executor)](/patterns/planner_worker.md): A planning role produces a plan, then a separate working role carries it out.
+- [hierarchical_delegation (hierarchical agents)](/patterns/hierarchical_delegation.md): Work is delegated down several levels: assignees become assigners.
+- [blackboard (shared scratchpad)](/patterns/blackboard.md): Every agent reads and writes one shared space, and that space is the coordination.
+- [shared_ledger (append-only log coordination)](/patterns/shared_ledger.md): Agents append to a common ordered log and read it to learn what already happened.
+- [mailbox_network (peer-to-peer agents)](/patterns/mailbox_network.md): Agents address each other through per-agent mailboxes instead of one open board.
+- [implement_review (maker-checker)](/patterns/implement_review.md): An implementing role hands work to a review-only role within a bounded cycle.
+- [critic_loop (evaluator-optimizer)](/patterns/critic_loop.md): Implementation and criticism alternate for a bounded number of rounds.
+- [council (LLM-as-a-judge panel)](/patterns/council.md): Several reviewers judge the same work and their verdicts are combined into one.
+- [debate (multi-agent debate)](/patterns/debate.md): Agents argue opposing positions and a separate judge decides the outcome.
+- [dynamic_spawning (dynamic subagents)](/patterns/dynamic_spawning.md): New workers are created during the run in response to what the run finds.
+- [coordinator_election (leader election)](/patterns/coordinator_election.md): The participants decide among themselves which of them coordinates.
+- [adaptive_routing (router)](/patterns/adaptive_routing.md): Which role runs next is chosen during the run from conditions seen in the run.
+- [architecture_search (agent architecture search)](/patterns/architecture_search.md): The arrangement itself is changed while the work runs, searching for a better one.
+- [successor_handoff (context handoff)](/patterns/successor_handoff.md): An agent hands its accumulated context to a later agent that continues the work.
+- [signed_coordination (authenticated agent messages)](/patterns/signed_coordination.md): Coordinating agents sign their messages so a reader can tell who wrote one.
+
+## Research
+
+- [Agent coordination in the OpenAI and Hugging Face evaluation incident](/research/openai-hugging-face-agent-coordination.md)
+
+## Starters
+
+- [single-agent-baseline](/starters/single-agent-baseline/0.1.0.md): One implementing role works a bug fix alone against public checks.
+- [bounded-adaptive-review](/starters/bounded-adaptive-review/0.1.0.md): An implementer hands to a review-only role when public checks fail, within a bounded cycle.
+- [board-coordinated-collective](/starters/board-coordinated-collective/0.1.0.md): A coordinator assigns lanes on a shared board, with mailboxes, signed control messages and a successor hand-off.
+
+## Optional
+
+- [Public formations](/formations/index.md): signed public formations (none published yet; see starters)
+- [Contract directory](/docs/index.md): every schema and API guide
+- [Integration guide for agents](/docs/api/integration.md)
+- [Authentication](/docs/api/authentication.md)
+- [Routes](/docs/api/routes.md)
+- [Errors](/docs/api/errors.md)
+- [Limits](/docs/api/limits.md)
+- [Signing keys](/trust/keys.md): keys that sign public artifacts
+- [Status](/status.md): service health and known limitations
+- [formation.policy/v0.1](/docs/schemas/formation/v0.1.md)
+- [formation.execution_lock/v0.1](/docs/schemas/execution_lock/v0.1.md)
+- [formation.workload_profile/v0.1](/docs/schemas/workload_profile/v0.1.md)
+- [formation.suite/v0.1](/docs/schemas/suite/v0.1.md)
+- [formation.evaluation_plan/v0.1](/docs/schemas/evaluation_plan/v0.1.md)
+- [formation.job_status/v0.1](/docs/schemas/job_status/v0.1.md)
+- [formation.run/v0.1](/docs/schemas/run/v0.1.md)
+- [formation.evidence/v0.1](/docs/schemas/evidence/v0.1.md)
+- [formation.decision/v0.1](/docs/schemas/decision/v0.1.md)
+- [formation.adoption/v0.1](/docs/schemas/adoption/v0.1.md)
+- [formation.subscription/v0.1](/docs/schemas/subscription/v0.1.md)
+- [formation.error/v0.1](/docs/schemas/error/v0.1.md)
+- [formation.service/v0.1](/docs/schemas/service/v0.1.md)
+- [formation.account_status/v0.1](/docs/schemas/account_status/v0.1.md)
+- [formation.recommendation_request/v0.1](/docs/schemas/recommendation_request/v0.1.md)
+- [formation.evaluation_plan_request/v0.1](/docs/schemas/evaluation_plan_request/v0.1.md)
+- [formation.comparison_request/v0.1](/docs/schemas/comparison_request/v0.1.md)
+- [formation.policy/v0.2](/docs/schemas/formation/v0.2.md)
