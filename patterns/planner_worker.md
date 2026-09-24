@@ -7,7 +7,6 @@ aliases:
   - plan-and-execute
   - plan-then-act
   - architect-editor
-  - 'nearest arrangement to prompt chaining'
 canonical_url: https://topologyindex.com/patterns/planner_worker.md
 description: 'A planning role produces a plan, then a separate working role carries it out.'
 executable_here: true
@@ -15,22 +14,100 @@ executor_requirements:
   - sequential_role_invocations
   - declared_handoff_on_measured_signal
 family: hierarchy
+findings_page: /patterns/planner_worker/findings.md
 observed_in: []
 path: /patterns/planner_worker.md
 pattern: planner_worker
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: helped
+  - benchmarks:
+      - HotpotQA
+    compared_against: 'Interleaved observation-dependent reasoning such as ReAct'
+    direction: helped
+    source_id: arxiv:2305.18323
+    task_domain: 'Multi-step tool-augmented question answering'
+    task_domains:
+      - reasoning
     url: https://arxiv.org/abs/2305.18323
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'ReAct-style sequential function calling'
+    direction: helped
+    source_id: arxiv:2312.04511
+    task_domain: 'Parallelizable function-calling tasks'
+    task_domains:
+      - operations
     url: https://arxiv.org/abs/2312.04511
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'Zero-shot and few-shot chain-of-thought prompting'
+    direction: helped
+    source_id: arxiv:2305.04091
+    task_domain: 'Arithmetic, commonsense and symbolic reasoning'
+    task_domains:
+      - reasoning
     url: https://arxiv.org/abs/2305.04091
-  - direction: helped
+  - benchmarks:
+      - 'aider code editing benchmark'
+    compared_against: 'The same models editing code on their own'
+    direction: helped
+    source_id: web:aider.chat/2024/09/26/architect.html
+    task_domain: 'Code editing'
+    task_domains:
+      - coding
     url: https://aider.chat/2024/09/26/architect.html
-  - direction: mixed
+  - benchmarks:
+      - WebArena-Lite
+      - WebVoyager
+    compared_against: 'Executor-only agents and planners without targeted training'
+    direction: mixed
+    source_id: arxiv:2503.09572
+    task_domain: 'Long-horizon web navigation'
+    task_domains:
+      - operations
     url: https://arxiv.org/abs/2503.09572
+  - benchmarks:
+      - HackTheBox
+      - VulnHub
+      - picoMini
+    compared_against: 'Direct use of the same LLM for penetration testing, and ablations removing each module'
+    direction: helped
+    source_id: arxiv:2308.06782
+    task_domain: 'Offensive security: penetration testing of practice machines'
+    task_domains:
+      - security
+    url: https://arxiv.org/abs/2308.06782
+  - benchmarks:
+      - 'NYU CTF Bench'
+      - Cybench
+      - HackTheBox
+    compared_against: 'The same system run as a single executor, and prior single-agent CTF agents'
+    direction: helped
+    source_id: arxiv:2502.10931
+    task_domain: 'Offensive security: capture-the-flag challenges'
+    task_domains:
+      - security
+    url: https://arxiv.org/abs/2502.10931
+  - benchmarks:
+      - 'NYU CTF Bench'
+    compared_against: 'Planner and executor running the same model'
+    direction: no_clear_gain
+    source_id: arxiv:2604.17159
+    task_domain: 'Offensive security: capture-the-flag challenges'
+    task_domains:
+      - security
+    url: https://arxiv.org/abs/2604.17159
+  - benchmarks:
+      - GAIA
+      - WebWalkerQA
+      - SimpleQA
+      - 'Humanity''s Last Exam'
+    compared_against: 'Single-model search agents such as WebThinker and ReAct, plan-and-solve prompting, and retrieval-augmented generation'
+    direction: helped
+    source_id: arxiv:2507.02652
+    task_domain: 'Deep search: complex multi-step information seeking'
+    task_domains:
+      - research
+    url: https://arxiv.org/abs/2507.02652
 qualifying_evidence: []
 references:
   - https://arxiv.org/abs/2305.04091
@@ -44,7 +121,7 @@ unmet_executor_requirements: []
 
 The `planner_worker` multi-agent pattern (family `hierarchy`): a planning role produces a plan, then a separate working role carries it out.
 
-Also called: planner-executor, plan-and-execute, plan-then-act, architect-editor, nearest arrangement to prompt chaining.
+Also called: planner-executor, plan-and-execute, plan-then-act, architect-editor.
 
 Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
@@ -71,30 +148,22 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/planner_worker/findings.md](/patterns/planner_worker/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Helped** — The authors report that decoupling up-front planning from tool observations, with separate planner, worker and solver roles, used several times fewer tokens and slightly improved accuracy over interleaved reason-and-act prompting.
-  Compared against: Interleaved observation-dependent reasoning such as ReAct. Domain: Multi-step tool-augmented question answering. Benchmarks: HotpotQA.
-  Caveat: Gains were shown with older models on a small set of QA benchmarks, and a fixed up-front plan cannot adapt to surprising observations.
-  Source: [ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models](https://arxiv.org/abs/2305.18323), Xu et al., 2023-05-23.
-- **Helped** — The authors report that a planner that emits a dependency graph of function calls, executed in parallel by a dispatcher, cut latency and cost and modestly improved accuracy relative to sequential ReAct.
-  Compared against: ReAct-style sequential function calling. Domain: Parallelizable function-calling tasks.
-  Caveat: Benefits depend on the task having independent sub-calls, and the 'up to' gains are best cases rather than averages.
-  Source: [An LLM Compiler for Parallel Function Calling](https://arxiv.org/abs/2312.04511), Kim et al., 2023-12-07.
-- **Helped** — The authors report that prompting a model to first devise a plan and then carry out subtasks substantially outperformed zero-shot chain-of-thought and approached few-shot chain-of-thought on math reasoning.
-  Compared against: Zero-shot and few-shot chain-of-thought prompting. Domain: Arithmetic, commonsense and symbolic reasoning.
-  Caveat: This is a single-model prompting technique, not separate planner and executor agents, evaluated on an older model.
-  Source: [Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models](https://arxiv.org/abs/2305.04091), Wang et al., 2023-05-06.
-- **Helped** — Aider reports that splitting work between an architect model that proposes a solution and an editor model that writes the edits scored at or above each model working alone on its code editing benchmark, with the best pairing setting a new high score.
-  Compared against: The same models editing code on their own. Domain: Code editing. Benchmarks: aider code editing benchmark.
-  Caveat: Self-published benchmark by the tool's developer, and the top pairings were described as too slow for interactive use.
-  Source: [Aider blog: Separating code reasoning and editing](https://aider.chat/2024/09/26/architect.html), Aider (Paul Gauthier), 2024-09-26.
-- **Mixed** — The authors report that adding an untrained planner failed to improve over fine-tuned executors, suggesting poor plans can confuse the executor, while a planner trained on synthetic plans plus dynamic replanning reached state-of-the-art web navigation results.
-  Compared against: Executor-only agents and planners without targeted training. Domain: Long-horizon web navigation. Benchmarks: WebArena-Lite, WebVoyager.
-  Caveat: The gains rely on substantial planner fine-tuning with synthetic data, so an off-the-shelf planner split alone did not deliver them.
-  Source: [Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks](https://arxiv.org/abs/2503.09572), Erdogan et al., 2025-03-12.
+- **Helped**: [ReWOO: Decoupling Reasoning from Observations for Efficient Augmented Language Models](https://arxiv.org/abs/2305.18323)
+- **Helped**: [An LLM Compiler for Parallel Function Calling](https://arxiv.org/abs/2312.04511)
+- **Helped**: [Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models](https://arxiv.org/abs/2305.04091)
+- **Helped**: [Aider blog: Separating code reasoning and editing](https://aider.chat/2024/09/26/architect.html)
+- **Mixed**: [Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks](https://arxiv.org/abs/2503.09572)
+- **Helped**: [PentestGPT: Evaluating and Harnessing Large Language Models for Automated Penetration Testing](https://arxiv.org/abs/2308.06782)
+- **Helped**: [D-CIPHER: Dynamic Collaborative Intelligent Multi-Agent System with Planner and Heterogeneous Executors for Offensive Security](https://arxiv.org/abs/2502.10931)
+- **No clear gain**: [Systematic Capability Benchmarking of Frontier Large Language Models for Offensive Cyber Tasks](https://arxiv.org/abs/2604.17159)
+- **Helped**: [HiRA: A Hierarchical Reasoning Framework for Decoupled Planning and Execution in Deep Search](https://arxiv.org/abs/2507.02652)
 
 ## Sources that describe it
 

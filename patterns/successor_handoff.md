@@ -13,6 +13,7 @@ executable_here: false
 executor_requirements:
   - context_carried_between_episodes
 family: continuity
+findings_page: /patterns/successor_handoff/findings.md
 observed_in:
   - /research/openai-hugging-face-agent-coordination.md
 path: /patterns/successor_handoff.md
@@ -20,15 +21,44 @@ pattern: successor_handoff
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: mixed
+  - benchmarks: []
+    compared_against: 'A coding agent looping across context windows with compaction only'
+    direction: helped
+    source_id: web:anthropic.com/engineering/effective-harnesses-for-long-running-agents
+    task_domain: 'Long-running software development'
+    task_domains:
+      - coding
     url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'The same agent without context management features'
+    direction: helped
+    source_id: web:claude.com/blog/context-management
+    task_domain: 'Agentic web search'
+    task_domains:
+      - research
     url: https://claude.com/blog/context-management
-  - direction: mixed
+  - benchmarks: []
+    compared_against: 'Keeping all history in one context window'
+    direction: mixed
+    source_id: web:anthropic.com/engineering/effective-context-engineering-for-ai-agents
+    task_domain: 'Long-horizon agent tasks'
+    task_domains: []
     url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-  - direction: helped
+  - benchmarks:
+      - 'Deep Memory Retrieval'
+    compared_against: 'Fixed-context LLMs without memory management'
+    direction: helped
+    source_id: arxiv:2310.08560
+    task_domain: 'Multi-session chat and long document analysis'
+    task_domains:
+      - documents
     url: https://arxiv.org/abs/2310.08560
-  - direction: mixed
+  - benchmarks: []
+    compared_against: 'Information spread across many conversation turns'
+    direction: helped
+    source_id: arxiv:2505.06120
+    task_domain: 'Multi-turn generation tasks'
+    task_domains: []
     url: https://arxiv.org/abs/2505.06120
 qualifying_evidence: []
 references: []
@@ -69,30 +99,18 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/successor_handoff/findings.md](/patterns/successor_handoff/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Mixed** — Anthropic reports that compaction alone was not enough for a frontier coding agent working across many context windows, and that an initializer agent plus structured progress notes for each new session addressed failures like premature completion.
-  Compared against: A coding agent looping across context windows with compaction only. Domain: Long-running software development.
-  Caveat: Engineering guidance from qualitative experience without a controlled benchmark.
-  Source: [Anthropic Engineering: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), Justin Young et al. (Anthropic), 2025-11-26.
-- **Helped** — Anthropic reports that combining a memory tool with context editing improved performance on an internal agentic search evaluation and let long workflows finish that otherwise failed from context exhaustion.
-  Compared against: The same agent without context management features. Domain: Agentic web search.
-  Caveat: Vendor-run internal evaluation with no public benchmark.
-  Source: [Claude blog: Managing context on the Claude Developer Platform](https://claude.com/blog/context-management), Anthropic, 2025-09-29.
-- **Mixed** — Anthropic describes compaction, structured note-taking and subagents returning condensed summaries as techniques for carrying work across context limits, motivated by context rot.
-  Compared against: Keeping all history in one context window. Domain: Long-horizon agent tasks.
-  Caveat: Guidance, not a result; the post provides no quantitative comparison.
-  Source: [Anthropic Engineering: Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), Rajasekaran, Dixon, Ryan, Hadfield (Anthropic), 2025-09-29.
-- **Helped** — MemGPT reports that paging information between a limited context window and external memory tiers substantially outperformed fixed-context baselines at recalling facts from earlier sessions.
-  Compared against: Fixed-context LLMs without memory management. Domain: Multi-session chat and long document analysis. Benchmarks: Deep Memory Retrieval.
-  Caveat: A single agent managing its own memory rather than a handoff between agents, evaluated on older models.
-  Source: [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560), Packer et al., 2023-10-12.
-- **Mixed** — Laban and colleagues report that LLMs degrade sharply when information arrives across many turns, that recap strategies only partly help, and suggest consolidating requirements into a fresh conversation.
-  Compared against: Single-turn fully specified instructions. Domain: Multi-turn generation tasks.
-  Caveat: Studies user-to-model conversation rather than agent-to-agent handoff; the fresh-conversation advice is a recommendation, not a measured intervention.
-  Source: [LLMs Get Lost In Multi-Turn Conversation](https://arxiv.org/abs/2505.06120), Laban et al., 2025-05-09.
+- **Helped**: [Anthropic Engineering: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
+- **Helped**: [Claude blog: Managing context on the Claude Developer Platform](https://claude.com/blog/context-management)
+- **Mixed**: [Anthropic Engineering: Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- **Helped**: [MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560)
+- **Helped**: [LLMs Get Lost In Multi-Turn Conversation](https://arxiv.org/abs/2505.06120)
 
 ## Can this deployment execute it
 

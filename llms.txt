@@ -12,12 +12,33 @@ patterns: evidence attaches to a complete configuration, and none is published y
 
 ## Start here
 
-- [Pattern catalogue and decision guide](/patterns/index.md): every pattern with aliases, and a table for choosing one by task shape
+- [Pattern catalogue and decision guide](/patterns/index.md): every pattern with aliases; the table below is its decision guide
+- [Task domains](/domains/index.md): a way into the decision guide by the kind of work, with the published findings tagged with each domain
+- [Agentic design patterns](/guides/agentic-design-patterns.md): a guide to multi-agent architecture and agent orchestration patterns: every pattern by family, how to choose one, agent swarms and general findings
 - [Starter formations](/starters/index.md): unvalidated, unsigned formations to copy and register privately
 - [Research records](/research/index.md): reports that motivate the arrangements, attributed to their sources
 - [Integration guide](/docs/api/integration.md): how an agent uses this service step by step
 - [Service introduction](/index.md): what the service is, workloads, auth and next links
-- [Remote MCP server](https://topologyindex.com/mcp): public, read-only, stateless MCP over Streamable HTTP (POST only, no credential) with search, fetch, list_patterns, get_pattern and list_starters tools and every page below as a resource
+- [Remote MCP server](https://topologyindex.com/mcp): public, stateless MCP over Streamable HTTP (POST only, no credential) with read-only search, fetch, list_patterns, get_pattern and list_starters tools, every page below as a resource, and report_outcome, which only accepts a use ticket (limited rollout)
+- [Reporting outcomes (limited rollout)](/docs/api/contributing.md): only for a pattern, starter or formation fetch that carried a `Use-Ticket` (or a "Report back" note at the end of the page), which invited credentials and some selected visiting agents receive; without one there is nothing to report and nothing else changes.
+
+## Choosing a pattern
+
+Where to start by the shape of the task. Every row is a hypothesis to test against a strong
+single-agent configuration, not a ranking: nothing in this table has been measured here.
+The same rows are the `choosing` frontmatter of [/patterns/index.md](/patterns/index.md).
+
+| If the task… | Start with | Consider next | Avoid when |
+| --- | --- | --- | --- |
+| is small, or has one clear owner | [single_agent](/patterns/single_agent.md) | [implement_review](/patterns/implement_review.md) | the task clearly exceeds one context window |
+| is easier to check than to do | [implement_review](/patterns/implement_review.md) | [critic_loop](/patterns/critic_loop.md) | nothing outside the roles can validate the result |
+| needs several rounds of criticism | [critic_loop](/patterns/critic_loop.md) | [council](/patterns/council.md) | rounds stop converging |
+| splits into independent parts | [map_reduce](/patterns/map_reduce.md) | [independent_workers](/patterns/independent_workers.md) | the parts depend on each other |
+| often fails, but attempts vary | [fan_out](/patterns/fan_out.md) | [council](/patterns/council.md) | nothing can cheaply pick the winning attempt |
+| needs a plan before editing | [planner_worker](/patterns/planner_worker.md) | [supervisor](/patterns/supervisor.md) | the plan cannot be written without touching the work |
+| has subtasks unknown until it starts | [supervisor](/patterns/supervisor.md) | [dynamic_spawning](/patterns/dynamic_spawning.md) | a fixed plan would do |
+| needs a different specialist per input | [adaptive_routing](/patterns/adaptive_routing.md) | [supervisor](/patterns/supervisor.md) | the routing condition is not observable |
+| outlasts one context window or session | [successor_handoff](/patterns/successor_handoff.md) | [shared_ledger](/patterns/shared_ledger.md) | rediscovery is cheaper than a handover |
 
 ## Patterns
 
@@ -28,6 +49,7 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [lane_swarm (agent swarm)](/patterns/lane_swarm.md): Many workers take assigned lanes of one larger effort on a common channel.
 - [supervisor (orchestrator-worker)](/patterns/supervisor.md): One controlling role directs subordinate workers and decides what happens next.
 - [planner_worker (planner-executor)](/patterns/planner_worker.md): A planning role produces a plan, then a separate working role carries it out.
+- [role_pipeline (prompt chaining)](/patterns/role_pipeline.md): A fixed sequence of roles, each working from what the role before it produced.
 - [hierarchical_delegation (hierarchical agents)](/patterns/hierarchical_delegation.md): Work is delegated down several levels: assignees become assigners.
 - [blackboard (shared scratchpad)](/patterns/blackboard.md): Every agent reads and writes one shared space, and that space is the coordination.
 - [shared_ledger (append-only log coordination)](/patterns/shared_ledger.md): Agents append to a common ordered log and read it to learn what already happened.
@@ -39,9 +61,20 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [dynamic_spawning (dynamic subagents)](/patterns/dynamic_spawning.md): New workers are created during the run in response to what the run finds.
 - [coordinator_election (leader election)](/patterns/coordinator_election.md): The participants decide among themselves which of them coordinates.
 - [adaptive_routing (router)](/patterns/adaptive_routing.md): Which role runs next is chosen during the run from conditions seen in the run.
+- [tree_search (Language Agent Tree Search)](/patterns/tree_search.md): Partial attempts branch into a tree, an evaluator scores the branches, and the most promising one is extended next.
 - [architecture_search (agent architecture search)](/patterns/architecture_search.md): The arrangement itself is changed while the work runs, searching for a better one.
 - [successor_handoff (context handoff)](/patterns/successor_handoff.md): An agent hands its accumulated context to a later agent that continues the work.
 - [signed_coordination (authenticated agent messages)](/patterns/signed_coordination.md): Coordinating agents sign their messages so a reader can tell who wrote one.
+
+## Task domains
+
+- [coding](/domains/coding.md): Software engineering by agents: code generation, bug fixing in a repository, code review, refactoring and long-running development.
+- [research](/domains/research.md): Finding and synthesizing information across sources: web and deep research, literature review and data discovery.
+- [documents](/domains/documents.md): Reading, summarizing and answering questions over long documents and collections of them.
+- [reasoning](/domains/reasoning.md): Math, logic, knowledge and question answering, where the answer comes from thinking rather than from acting on an environment.
+- [evaluation](/domains/evaluation.md): Judging the output of models and agents: LLM-as-judge, graders and review panels.
+- [operations](/domains/operations.md): Acting on an environment through tools: web navigation, desktop and terminal work, workplace tools and function calling.
+- [security](/domains/security.md): Agents doing security work: code audit, vulnerability detection, penetration testing, capture-the-flag challenges, exploitation and patching; attacks on agents are a separate risk.
 
 ## Research
 
@@ -52,12 +85,16 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [single-agent-baseline](/starters/single-agent-baseline/0.1.0.md): One implementing role works a bug fix alone against public checks.
 - [bounded-adaptive-review](/starters/bounded-adaptive-review/0.1.0.md): An implementer hands to a review-only role when public checks fail, within a bounded cycle.
 - [board-coordinated-collective](/starters/board-coordinated-collective/0.1.0.md): A coordinator assigns lanes on a shared board, with mailboxes, signed control messages and a successor hand-off.
+- [research-split-and-combine](/starters/research-split-and-combine/0.1.0.md): A splitter divides a broad research question into independent parts, researchers work the parts at the same time, and a combiner writes one sourced answer.
+- [research-supervised-investigation](/starters/research-supervised-investigation/0.1.0.md): A lead holds the question and the running findings, and sends a researcher after one lead at a time until the answer is supported.
+- [security-planned-audit](/starters/security-planned-audit/0.1.0.md): A planner maps a codebase and writes an audit plan without editing code, then an auditor works through the plan and fixes what it confirms against public checks.
 
 ## Optional
 
 - [Public formations](/formations/index.md): signed public formations (none published yet; see starters)
 - [Contract directory](/docs/index.md): every schema and API guide
 - [Integration guide for agents](/docs/api/integration.md)
+- [Reporting outcomes (limited rollout)](/docs/api/contributing.md)
 - [Authentication](/docs/api/authentication.md)
 - [Routes](/docs/api/routes.md)
 - [Errors](/docs/api/errors.md)
@@ -81,4 +118,16 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [formation.recommendation_request/v0.1](/docs/schemas/recommendation_request/v0.1.md)
 - [formation.evaluation_plan_request/v0.1](/docs/schemas/evaluation_plan_request/v0.1.md)
 - [formation.comparison_request/v0.1](/docs/schemas/comparison_request/v0.1.md)
+- [formation.use_receipt/v0.1](/docs/schemas/use_receipt/v0.1.md)
 - [formation.policy/v0.2](/docs/schemas/formation/v0.2.md)
+- [formation.pattern_index/v0.1](/docs/schemas/pattern_index/v0.1.md)
+- [formation.pattern/v0.1](/docs/schemas/pattern/v0.1.md)
+- [formation.pattern_findings/v0.1](/docs/schemas/pattern_findings/v0.1.md)
+- [formation.domain_index/v0.1](/docs/schemas/domain_index/v0.1.md)
+- [formation.domain/v0.1](/docs/schemas/domain/v0.1.md)
+- [formation.domain_findings/v0.1](/docs/schemas/domain_findings/v0.1.md)
+- [formation.guide/v0.1](/docs/schemas/guide/v0.1.md)
+- [formation.research_index/v0.1](/docs/schemas/research_index/v0.1.md)
+- [formation.research/v0.1](/docs/schemas/research/v0.1.md)
+- [formation.starter_index/v0.1](/docs/schemas/starter_index/v0.1.md)
+- [formation.doc/v0.1](/docs/schemas/doc/v0.1.md)

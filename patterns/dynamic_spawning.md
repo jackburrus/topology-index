@@ -14,20 +14,58 @@ executor_requirements:
   - role_creation_at_runtime
   - concurrent_role_invocations
 family: adaptive
+findings_page: /patterns/dynamic_spawning/findings.md
 observed_in: []
 path: /patterns/dynamic_spawning.md
 pattern: dynamic_spawning
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: helped
-    url: https://www.anthropic.com/engineering/built-multi-agent-research-system
-  - direction: mixed
+  - benchmarks: []
+    compared_against: 'A single agent using the stronger model alone'
+    direction: helped
+    source_id: web:anthropic.com/engineering/multi-agent-research-system
+    task_domain: 'Open-ended web research'
+    task_domains:
+      - research
+    url: https://www.anthropic.com/engineering/multi-agent-research-system
+  - benchmarks: []
+    compared_against: 'A single agent'
+    direction: mixed
+    source_id: arxiv:2308.10848
+    task_domain: 'Text understanding, reasoning, coding, tool use and embodied tasks'
+    task_domains:
+      - coding
+      - reasoning
+      - operations
     url: https://arxiv.org/abs/2308.10848
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'Existing multi-agent methods with predefined agents'
+    direction: helped
+    source_id: arxiv:2309.17288
+    task_domain: 'Open-ended question answering and creative writing'
+    task_domains:
+      - reasoning
     url: https://arxiv.org/abs/2309.17288
-  - direction: hurt
+  - benchmarks: []
+    compared_against: 'A single-threaded linear agent sharing full context'
+    direction: hurt
+    source_id: web:cognition.com/blog/dont-build-multi-agents
+    task_domain: 'Software engineering agents'
+    task_domains:
+      - coding
     url: https://cognition.com/blog/dont-build-multi-agents
+  - benchmarks:
+      - Bamboogle
+      - Musique
+      - HotpotQA
+    compared_against: 'The same model without search, a ReAct-style search agent, and the ChatGPT-Web and Perplexity Pro products'
+    direction: helped
+    source_id: arxiv:2407.20183
+    task_domain: 'Web information seeking and multi-hop question answering'
+    task_domains:
+      - research
+    url: https://arxiv.org/abs/2407.20183
 qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/multi-agent-research-system
@@ -69,26 +107,18 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/dynamic_spawning/findings.md](/patterns/dynamic_spawning/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Helped** — Anthropic reports that its research system, in which a lead agent spawns parallel subagents, substantially outperformed a single-agent setup on its internal research evaluation.
-  Compared against: A single agent using the stronger model alone. Domain: Open-ended web research.
-  Caveat: Internal, vendor-run evaluation with no public benchmark for the headline comparison, and Anthropic notes the multi-agent system uses many times more tokens than chat.
-  Source: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system), Hadfield, Zhang, Lien, Scholz, Fox, Ford (Anthropic), 2025-06-13.
-- **Mixed** — AgentVerse reports that dynamically adjusting group composition by recruiting expert agents lets multi-agent groups outperform a single agent, while also documenting negative emergent social behaviors.
-  Compared against: A single agent. Domain: Text understanding, reasoning, coding, tool use and embodied tasks.
-  Caveat: Author-run evaluation of the proposed framework; the negative behaviors are described qualitatively.
-  Source: [AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors](https://arxiv.org/abs/2308.10848), Chen et al., 2023-08-21.
-- **Helped** — AutoAgents reports that generating task-specific agents at runtime, with an observer reviewing plans, yields more coherent and accurate solutions than existing multi-agent methods.
-  Compared against: Existing multi-agent methods with predefined agents. Domain: Open-ended question answering and creative writing.
-  Caveat: Author-run comparison; the abstract gives no cost comparison against simpler single-agent baselines.
-  Source: [AutoAgents: A Framework for Automatic Agent Generation](https://arxiv.org/abs/2309.17288), Chen et al., 2023-09-29.
-- **Hurt** — Cognition argues against parallel subagents because subagents that cannot see each other's work make conflicting implicit decisions, recommending single-threaded agents by default.
-  Compared against: A single-threaded linear agent sharing full context. Domain: Software engineering agents.
-  Caveat: Vendor guidance based on an illustrative example, not a controlled experiment.
-  Source: [Cognition blog: Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents), Walden Yan (Cognition), 2025-06-12.
+- **Helped**: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+- **Mixed**: [AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors](https://arxiv.org/abs/2308.10848)
+- **Helped**: [AutoAgents: A Framework for Automatic Agent Generation](https://arxiv.org/abs/2309.17288)
+- **Hurt**: [Cognition blog: Don't Build Multi-Agents](https://cognition.com/blog/dont-build-multi-agents)
+- **Helped**: [MindSearch: Mimicking Human Minds Elicits Deep AI Searcher](https://arxiv.org/abs/2407.20183)
 
 ## Sources that describe it
 

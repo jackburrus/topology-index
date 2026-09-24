@@ -14,21 +14,66 @@ executor_requirements:
   - configuration_change_during_run
   - role_creation_at_runtime
 family: adaptive
+findings_page: /patterns/architecture_search/findings.md
 observed_in: []
 path: /patterns/architecture_search.md
 pattern: architecture_search
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: helped
+  - benchmarks:
+      - DROP
+      - MGSM
+    compared_against: 'State-of-the-art hand-designed agents'
+    direction: helped
+    source_id: arxiv:2408.08435
+    task_domain: 'Reading comprehension, math, science and coding'
+    task_domains:
+      - coding
+      - reasoning
     url: https://arxiv.org/abs/2408.08435
-  - direction: hurt
+  - benchmarks: []
+    compared_against: 'Human-designed agents, accounting for design plus deployment cost'
+    direction: hurt
+    source_id: arxiv:2510.06711
+    task_domain: 'Automated agent design across several datasets'
+    task_domains: []
     url: https://arxiv.org/abs/2510.06711
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'Manually designed workflows and prior automated methods'
+    direction: helped
+    source_id: arxiv:2410.10762
+    task_domain: 'Question answering, code generation and math'
+    task_domains:
+      - coding
+      - reasoning
     url: https://arxiv.org/abs/2410.10762
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'Handcrafted and automated multi-agent systems'
+    direction: helped
+    source_id: arxiv:2502.04180
+    task_domain: 'Math, coding and tool use'
+    task_domains:
+      - coding
+      - reasoning
+      - operations
     url: https://arxiv.org/abs/2502.04180
-  - direction: mixed
+  - benchmarks:
+      - MATH
+      - DROP
+      - HotpotQA
+      - MuSiQue
+      - '2WikiMQA'
+      - MBPP
+      - HumanEval
+      - LiveCodeBench
+    compared_against: 'Unoptimized topologies and agent-scaling strategies such as self-consistency and debate'
+    direction: mixed
+    source_id: arxiv:2502.02533
+    task_domain: 'Reasoning, multi-hop question answering and coding'
+    task_domains:
+      - coding
+      - reasoning
     url: https://arxiv.org/abs/2502.02533
 qualifying_evidence: []
 references:
@@ -71,30 +116,18 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/architecture_search/findings.md](/patterns/architecture_search/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Helped** — ADAS reports that agents discovered by a meta agent programming new designs in code outperformed hand-designed agents and kept their advantage when transferred across domains and models.
-  Compared against: State-of-the-art hand-designed agents. Domain: Reading comprehension, math, science and coding. Benchmarks: DROP, MGSM.
-  Caveat: Search cost is not weighed against the gains in the abstract, and later work questions its cost-effectiveness.
-  Source: [Automated Design of Agentic Systems](https://arxiv.org/abs/2408.08435), Hu, Lu, Clune, 2024-08-15.
-- **Hurt** — El and colleagues report that meta-agent design pays for itself against human-designed agents only on a small minority of datasets, and that feeding all prior designs into context performs worse than ignoring them.
-  Compared against: Human-designed agents, accounting for design plus deployment cost. Domain: Automated agent design across several datasets.
-  Caveat: Analyzes a particular family of meta-agent methods; conclusions depend on deployment volume assumptions.
-  Source: [Inefficiencies of Meta Agents for Agent Design](https://arxiv.org/abs/2510.06711), El, Yuksekgonul, Zou, 2025-10-08.
-- **Helped** — AFlow reports that Monte Carlo tree search over code-represented workflows beat prior baselines and let smaller models outperform a much larger model on some tasks at a fraction of its inference cost.
-  Compared against: Manually designed workflows and prior automated methods. Domain: Question answering, code generation and math.
-  Caveat: Author-run evaluation; the cheaper-model result holds only on specific tasks.
-  Source: [AFlow: Automating Agentic Workflow Generation](https://arxiv.org/abs/2410.10762), Zhang et al., 2024-10-14.
-- **Helped** — MaAS reports that sampling query-dependent agent architectures from a learned supernet matched or beat existing systems while using only a fraction of their inference cost, with cross-dataset and cross-model transfer.
-  Compared against: Handcrafted and automated multi-agent systems. Domain: Math, coding and tool use.
-  Caveat: Author-run comparison; some reported accuracy gains are small.
-  Source: [Multi-agent Architecture Search via Agentic Supernet](https://arxiv.org/abs/2502.04180), Zhang et al., 2025-02-06.
-- **Mixed** — MASS reports that only a small fraction of topologies improved performance, with most failing to help or degrading it, and that prompt optimization was more token-effective than scaling agent count.
-  Compared against: Unoptimized topologies and agent-scaling strategies such as self-consistency and debate. Domain: Reasoning, multi-hop question answering and coding. Benchmarks: MATH, DROP, HotpotQA, MuSiQue, 2WikiMQA, MBPP, HumanEval, LiveCodeBench.
-  Caveat: Findings come from one search framework and a limited set of model backbones.
-  Source: [Multi-Agent Design: Optimizing Agents with Better Prompts and Topologies](https://arxiv.org/abs/2502.02533), Zhou et al., 2025-02-04.
+- **Helped**: [Automated Design of Agentic Systems](https://arxiv.org/abs/2408.08435)
+- **Hurt**: [Inefficiencies of Meta Agents for Agent Design](https://arxiv.org/abs/2510.06711)
+- **Helped**: [AFlow: Automating Agentic Workflow Generation](https://arxiv.org/abs/2410.10762)
+- **Helped**: [Multi-agent Architecture Search via Agentic Supernet](https://arxiv.org/abs/2502.04180)
+- **Mixed**: [Multi-Agent Design: Optimizing Agents with Better Prompts and Topologies](https://arxiv.org/abs/2502.02533)
 
 ## Sources that describe it
 

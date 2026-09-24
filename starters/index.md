@@ -2,6 +2,10 @@
 schema: formation.starter_index/v0.1
 kind: starter_index
 visibility: public
+canonical_url: https://topologyindex.com/starters/index.md
+contributing:
+  guide: /docs/api/contributing.md
+  status: limited_rollout
 formation_schema: formation.policy/v0.2
 label_extension: topologyindex.com.catalog
 path: /starters/index.md
@@ -62,9 +66,51 @@ starters:
     research_record: /research/openai-hugging-face-agent-coordination.md
     status: proposed
     task_classes:
-      - coordination.shared_project
+      - operations.shared_project
     topology: custom
     topology_id: board_coordinated_collective
+    version: '0.1.0'
+  - name: research-split-and-combine
+    path: /starters/research-split-and-combine/0.1.0.md
+    pattern_paths:
+      - /patterns/map_reduce.md
+    patterns:
+      - map_reduce
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - research.broad_question
+    topology: custom
+    topology_id: split_and_combine
+    version: '0.1.0'
+  - name: research-supervised-investigation
+    path: /starters/research-supervised-investigation/0.1.0.md
+    pattern_paths:
+      - /patterns/supervisor.md
+    patterns:
+      - supervisor
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - research.open_investigation
+    topology: custom
+    topology_id: lead_with_researcher
+    version: '0.1.0'
+  - name: security-planned-audit
+    path: /starters/security-planned-audit/0.1.0.md
+    pattern_paths:
+      - /patterns/planner_worker.md
+    patterns:
+      - planner_worker
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - security.code_audit
+    topology: custom
+    topology_id: plan_then_audit
     version: '0.1.0'
 vocabulary:
   candidates:
@@ -96,7 +142,8 @@ any recommendation. Each document labels its own provenance and status under the
 - `synthetic`: written by Topology Index as a starting point.
 - `reconstructed`: derived by Topology Index from a cited research record; not a
   configuration the source published or ran.
-- `unvalidated`: nobody has run it here.
+- `unvalidated`: nobody has run it here. Its document says whether this deployment can
+  execute it.
 - `proposed`: a vocabulary candidate that this deployment cannot execute.
 
 ## Starters
@@ -104,13 +151,28 @@ any recommendation. Each document labels its own provenance and status under the
 - [single-agent-baseline](/starters/single-agent-baseline/0.1.0.md): One implementing role works a bug fix alone against public checks.
   Provenance `synthetic`, status `unvalidated`, topology `single`.
   Patterns: `single_agent`
+  Task classes: `coding.bugfix`
 - [bounded-adaptive-review](/starters/bounded-adaptive-review/0.1.0.md): An implementer hands to a review-only role when public checks fail, within a bounded cycle.
   Provenance `synthetic`, status `unvalidated`, topology `adaptive_review`.
   Patterns: `implement_review`
+  Task classes: `coding.bugfix`
 - [board-coordinated-collective](/starters/board-coordinated-collective/0.1.0.md): A coordinator assigns lanes on a shared board, with mailboxes, signed control messages and a successor hand-off.
   Provenance `reconstructed`, status `proposed`, topology `custom`.
   Patterns: `blackboard`, `lane_swarm`, `supervisor`, `hierarchical_delegation`, `mailbox_network`, `successor_handoff`, `signed_coordination`
+  Task classes: `operations.shared_project`
   Research record: [/research/openai-hugging-face-agent-coordination.md](/research/openai-hugging-face-agent-coordination.md)
+- [research-split-and-combine](/starters/research-split-and-combine/0.1.0.md): A splitter divides a broad research question into independent parts, researchers work the parts at the same time, and a combiner writes one sourced answer.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `map_reduce`
+  Task classes: `research.broad_question`
+- [research-supervised-investigation](/starters/research-supervised-investigation/0.1.0.md): A lead holds the question and the running findings, and sends a researcher after one lead at a time until the answer is supported.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `supervisor`
+  Task classes: `research.open_investigation`
+- [security-planned-audit](/starters/security-planned-audit/0.1.0.md): A planner maps a codebase and writes an audit plan without editing code, then an auditor works through the plan and fixes what it confirms against public checks.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `planner_worker`
+  Task classes: `security.code_audit`
 
 ## Topology vocabulary
 
@@ -119,3 +181,5 @@ topology names its arrangement with `topology_id`, `topology_version` and `vocab
 in `formation.policy/v0.2`. The closed pattern vocabulary, and which patterns this deployment
 can execute, is at [/patterns/index.md](/patterns/index.md); research-derived vocabulary candidates are at
 [/research/index.md](/research/index.md).
+
+[Reporting outcomes (limited rollout)](/docs/api/contributing.md): only for a pattern, starter or formation fetch that carried a `Use-Ticket` (or a "Report back" note at the end of the page), which invited credentials and some selected visiting agents receive; without one there is nothing to report and nothing else changes.

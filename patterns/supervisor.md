@@ -16,6 +16,7 @@ executor_requirements:
   - agent_to_agent_messages
   - routing_on_unmeasured_conditions
 family: hierarchy
+findings_page: /patterns/supervisor/findings.md
 observed_in:
   - /research/openai-hugging-face-agent-coordination.md
 path: /patterns/supervisor.md
@@ -23,16 +24,71 @@ pattern: supervisor
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'A single agent using the same model as the lead agent'
+    direction: helped
+    source_id: web:anthropic.com/engineering/multi-agent-research-system
+    task_domain: 'Open-ended web research'
+    task_domains:
+      - research
     url: https://www.anthropic.com/engineering/multi-agent-research-system
-  - direction: no_clear_gain
+  - benchmarks:
+      - GAIA
+      - AssistantBench
+      - WebArena
+    compared_against: 'Published state-of-the-art agent systems on each benchmark'
+    direction: no_clear_gain
+    source_id: arxiv:2411.04468
+    task_domain: 'Generalist web, file and coding tasks'
+    task_domains:
+      - coding
+      - operations
     url: https://arxiv.org/abs/2411.04468
-  - direction: mixed
+  - benchmarks:
+      - Finance-Agent
+      - PlanCraft
+      - BrowseComp-Plus
+      - Workbench
+      - 'SWE-bench Verified'
+      - Terminal-Bench
+    compared_against: 'Single-agent systems and independent, decentralized and hybrid multi-agent architectures'
+    direction: mixed
+    source_id: arxiv:2512.08296
+    task_domain: 'Agentic benchmarks spanning finance, web browsing, planning, workplace, software and terminal tasks'
+    task_domains:
+      - coding
+      - research
+      - reasoning
+      - operations
     url: https://arxiv.org/abs/2512.08296
-  - direction: helped
+  - benchmarks: []
+    compared_against: 'Single-agent approaches'
+    direction: helped
+    source_id: arxiv:2412.05449
+    task_domain: 'Enterprise assistant scenarios'
+    task_domains:
+      - operations
     url: https://arxiv.org/abs/2412.05449
-  - direction: hurt
+  - benchmarks:
+      - MAST-Data
+    compared_against: 'Expected task success of the same frameworks'
+    direction: hurt
+    source_id: arxiv:2503.13657
+    task_domain: 'Coding, math and general agent tasks across several open-source multi-agent frameworks'
+    task_domains:
+      - coding
+      - reasoning
     url: https://arxiv.org/abs/2503.13657
+  - benchmarks:
+      - AIxCC
+    compared_against: 'A single-agent patcher, a fixed workflow and a general-purpose coding agent on the same tasks'
+    direction: mixed
+    source_id: arxiv:2603.01257
+    task_domain: 'Security: repairing real-world vulnerabilities in large Java projects'
+    task_domains:
+      - coding
+      - security
+    url: https://arxiv.org/abs/2603.01257
 qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/building-effective-agents
@@ -76,30 +132,19 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/supervisor/findings.md](/patterns/supervisor/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Helped** — Anthropic reports that its lead-agent-plus-subagents research system substantially outperformed a single agent using the stronger lead model on its internal research evaluation.
-  Compared against: A single agent using the same model as the lead agent. Domain: Open-ended web research.
-  Caveat: Vendor self-report on an unpublished internal evaluation with no public replication.
-  Source: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), Anthropic (Hadfield, Zhang, Lien, Scholz, Fox, Ford), 2025-06-13.
-- **No clear gain** — The authors report that their orchestrator-led team of specialist agents achieved performance statistically comparable to, not better than, state-of-the-art systems on general agentic benchmarks, and trailed the top entries on one web benchmark.
-  Compared against: Published state-of-the-art agent systems on each benchmark. Domain: Generalist web, file and coding tasks. Benchmarks: GAIA, AssistantBench, WebArena.
-  Caveat: First-party evaluation by the system's builders against heterogeneous published baselines rather than matched single-agent controls.
-  Source: [Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks](https://arxiv.org/abs/2411.04468), Fourney et al. (Microsoft Research), 2024-11-07.
-- **Mixed** — The authors report that centralized orchestration strongly helped on decomposable financial reasoning but degraded performance on sequential planning, while containing error amplification far better than independent agents at a large token overhead.
-  Compared against: Single-agent systems and independent, decentralized and hybrid multi-agent architectures. Domain: Agentic benchmarks spanning finance, web browsing, planning, workplace, software and terminal tasks. Benchmarks: Finance-Agent, PlanCraft, BrowseComp-Plus, Workbench, SWE-bench Verified, Terminal-Bench.
-  Caveat: Results depend on the chosen model families and benchmark set, and the fitted predictive model explains only part of the variance.
-  Source: [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), Kim et al., 2025-12-09.
-- **Helped** — The authors report that multi-agent collaboration with a supervisor agent raised goal success over single-agent setups and that a routing mode reduced latency.
-  Compared against: Single-agent approaches. Domain: Enterprise assistant scenarios.
-  Caveat: Vendor technical report on handcrafted scenarios from a few enterprise domains, evaluated on its own product.
-  Source: [Towards Effective GenAI Multi-Agent Collaboration: Design and Evaluation for Enterprise Applications](https://arxiv.org/abs/2412.05449), Shu et al. (AWS), 2024-12-06.
-- **Hurt** — The authors report that popular multi-agent frameworks, including orchestrator-led ones, fail often, with failures clustering into system design, inter-agent misalignment and task verification problems rather than only underlying model weakness.
-  Compared against: Expected task success of the same frameworks. Domain: Coding, math and general agent tasks across several open-source multi-agent frameworks. Benchmarks: MAST-Data.
-  Caveat: A failure taxonomy built from annotated traces, not a controlled comparison of topologies against a single-agent baseline.
-  Source: [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657), Cemri et al., 2025-03-17.
+- **Helped**: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+- **No clear gain**: [Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks](https://arxiv.org/abs/2411.04468)
+- **Mixed**: [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296)
+- **Helped**: [Towards Effective GenAI Multi-Agent Collaboration: Design and Evaluation for Enterprise Applications](https://arxiv.org/abs/2412.05449)
+- **Hurt**: [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657)
+- **Mixed**: [A Systematic Study of LLM-Based Architectures for Automated Patching](https://arxiv.org/abs/2603.01257)
 
 ## Sources that describe it
 

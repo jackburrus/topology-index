@@ -12,17 +12,47 @@ executable_here: false
 executor_requirements:
   - concurrent_role_invocations
 family: parallelism
+findings_page: /patterns/independent_workers/findings.md
 observed_in: []
 path: /patterns/independent_workers.md
 pattern: independent_workers
 pattern_index: /patterns/index.md
 product_api_version: v1
 published_findings:
-  - direction: mixed
+  - benchmarks:
+      - BrowseComp-Plus
+      - 'Finance Agent'
+      - PlanCraft
+      - WorkBench
+      - 'SWE-bench Verified'
+      - Terminal-Bench
+    compared_against: 'Single-agent systems and centralized, decentralized and hybrid multi-agent architectures'
+    direction: mixed
+    source_id: arxiv:2512.08296
+    task_domain: 'Agentic web browsing, finance, planning, workplace, software engineering and terminal tasks'
+    task_domains:
+      - coding
+      - research
+      - reasoning
+      - operations
     url: https://arxiv.org/abs/2512.08296
-  - direction: mixed
+  - benchmarks:
+      - BrowseComp
+    compared_against: 'Single-agent Claude on the same research tasks'
+    direction: mixed
+    source_id: web:anthropic.com/engineering/multi-agent-research-system
+    task_domain: 'Open-ended web research'
+    task_domains:
+      - research
     url: https://www.anthropic.com/engineering/multi-agent-research-system
-  - direction: mixed
+  - benchmarks:
+      - 'SWE-bench Verified'
+    compared_against: 'Oracle selection, random selection and single trajectories'
+    direction: mixed
+    source_id: arxiv:2501.14723
+    task_domain: 'Resolving real GitHub issues'
+    task_domains:
+      - coding
     url: https://arxiv.org/abs/2501.14723
 qualifying_evidence: []
 references: []
@@ -62,22 +92,16 @@ These are things to watch for, not outcomes anyone measured here.
 
 ## What published studies found
 
-Attributed to each source and stated without figures, because a number from one
-configuration reads as a result for the pattern. Unfavourable results are included on
-purpose. None of this is evidence produced by this service. Reviewed 2026-09-22.
+Attributed to each source and stated without figures; unfavourable results are included on
+purpose, and none of this is evidence produced by this service. What each was compared with
+is in `published_findings`; each finding in words, with its caveat, is at
+[/patterns/independent_workers/findings.md](/patterns/independent_workers/findings.md). Reviewed 2026-09-23.
+Each label says how this pattern fared against what it was compared with, as the source reports
+it; the labels are defined at [/docs/schemas/pattern/v0.1.md](/docs/schemas/pattern/v0.1.md).
 
-- **Mixed** — The authors report that independent multi-agent setups without centralized verification propagate and amplify errors far more than centralized coordination, and that multi-agent gains vanish or reverse once the single-agent baseline is already strong.
-  Compared against: Single-agent systems and centralized, decentralized and hybrid multi-agent architectures. Domain: Agentic web browsing, finance, planning, workplace, software engineering and terminal tasks. Benchmarks: BrowseComp-Plus, Finance Agent, PlanCraft, WorkBench, SWE-bench Verified, Terminal-Bench.
-  Caveat: The fitted predictive model explains only a modest share of performance variance, so the patterns are tendencies rather than guarantees.
-  Source: [Towards a Science of Scaling Agent Systems (Kim et al., Google Research)](https://arxiv.org/abs/2512.08296), Yubin Kim et al., 2025-12-09.
-- **Mixed** — Anthropic reports that a lead agent spawning parallel subagents with separate context windows far outperformed a single agent on its internal breadth-first research eval, while using many times more tokens and fitting poorly to tasks that need shared context, such as most coding.
-  Compared against: Single-agent Claude on the same research tasks. Domain: Open-ended web research. Benchmarks: BrowseComp.
-  Caveat: The headline comparison uses an internal eval, and the authors attribute much of the gain to spending more tokens rather than to the topology itself.
-  Source: [How we built our multi-agent research system (Anthropic Engineering)](https://www.anthropic.com/engineering/multi-agent-research-system), Jeremy Hadfield et al., 2025-06-13.
-- **Mixed** — The authors report that running many independent multi-turn editing trajectories per issue and then selecting among them raises resolved-issue rates, but their selection step recovers only part of the gap between random pick and an oracle choice.
-  Compared against: Oracle selection, random selection and single trajectories. Domain: Resolving real GitHub issues. Benchmarks: SWE-bench Verified.
-  Caveat: The approach is expensive and its final score is capped by selection quality rather than by how many candidates are generated.
-  Source: [CodeMonkeys: scaling test-time compute for software engineering (Ehrlich et al.)](https://arxiv.org/abs/2501.14723), Ryan Ehrlich et al., 2025-01-24.
+- **Mixed**: [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296)
+- **Mixed**: [Anthropic Engineering: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+- **Mixed**: [CodeMonkeys: scaling test-time compute for software engineering (Ehrlich et al.)](https://arxiv.org/abs/2501.14723)
 
 ## Can this deployment execute it
 
