@@ -100,17 +100,17 @@ references:
   - https://arxiv.org/abs/2303.11366
   - https://www.anthropic.com/engineering/building-effective-agents
 schema_version: v0.1
-title: 'critic_loop multi-agent pattern (evaluator-optimizer, reflection)'
+title: 'When to use the critic_loop multi-agent pattern (evaluator-optimizer, reflection)?'
 unmet_executor_requirements: []
 ---
 
-# critic_loop
+# When to use the critic_loop multi-agent pattern (evaluator-optimizer, reflection)?
+
+**Short answer:** start with it when the task needs several rounds of criticism; avoid it when rounds stop converging. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/critic_loop/findings.md) keep the unfavourable ones.
 
 The `critic_loop` multi-agent pattern (family `verification`): implementation and criticism alternate for a bounded number of rounds.
 
 Also called: evaluator-optimizer (Anthropic), reflection, self-refine, generator-critic loop, actor-critic prompting.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -122,8 +122,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when one round of criticism is rarely enough and each further round is expected to remove more than it costs.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

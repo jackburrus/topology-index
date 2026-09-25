@@ -1,6 +1,8 @@
-# Topology Index
+# Topology Index: which multi-agent pattern should I use?
 
-> Reference for choosing a multi-agent LLM topology: the orchestration patterns agents are
+> Short answer: start with [single_agent](/patterns/single_agent.md) when the task is small, or has one clear owner, and avoid it when the task clearly exceeds one context window. Other tasks start by their shape in the guide below, or by
+> kind of work in the [task domains](/domains/index.md), whose findings keep the unfavourable ones.
+> A reference for choosing a multi-agent LLM topology: the orchestration patterns agents are
 > organized into (orchestrator-worker, planner-executor, evaluator-optimizer, map-reduce,
 > fan-out, router, debate, council, blackboard, swarm, handoff), with definitions, aliases,
 > failure modes, primary sources and copyable starter configurations. Raw Markdown with typed

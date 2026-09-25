@@ -99,19 +99,19 @@ qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/building-effective-agents
 schema_version: v0.1
-title: 'map_reduce multi-agent pattern (scatter-gather, parallelization by sectioning)'
+title: 'When to use the map_reduce multi-agent pattern (scatter-gather, parallelization by sectioning)?'
 unmet_executor_requirements:
   - concurrent_role_invocations
   - aggregation_over_agent_opinions
 ---
 
-# map_reduce
+# When to use the map_reduce multi-agent pattern (scatter-gather, parallelization by sectioning)?
+
+**Short answer:** start with it when the task splits into independent parts; avoid it when the parts depend on each other. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/map_reduce/findings.md) keep the unfavourable ones.
 
 The `map_reduce` multi-agent pattern (family `parallelism`): the task is split into parts, worked in parallel, and the parts are combined.
 
 Also called: scatter-gather, parallelization by sectioning (Anthropic), divide and conquer, split-and-merge.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -123,8 +123,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when the work genuinely decomposes into parts whose results do not depend on one another, and combining them is mechanical.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

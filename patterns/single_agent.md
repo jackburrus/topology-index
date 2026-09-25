@@ -87,17 +87,17 @@ references:
   - https://arxiv.org/abs/2210.03629
   - https://www.anthropic.com/engineering/building-effective-agents
 schema_version: v0.1
-title: 'single_agent multi-agent pattern (single-agent baseline, augmented LLM)'
+title: 'When to use the single_agent multi-agent pattern (single-agent baseline, augmented LLM)?'
 unmet_executor_requirements: []
 ---
 
-# single_agent
+# When to use the single_agent multi-agent pattern (single-agent baseline, augmented LLM)?
+
+**Short answer:** start with it when the task is small, or has one clear owner; avoid it when the task clearly exceeds one context window. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/single_agent/findings.md) keep the unfavourable ones.
 
 The `single_agent` multi-agent pattern (family `baseline`): one agent works the task alone, with no second role and no shared state.
 
 Also called: single-agent baseline, augmented LLM, ReAct agent, tool-using agent loop.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -109,8 +109,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when a task is small enough that a second role would add cost without changing the outcome. It is also the arrangement every comparison needs, because a claim about any other arrangement is only meaningful against a strong single-agent configuration.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

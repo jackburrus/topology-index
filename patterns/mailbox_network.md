@@ -102,19 +102,19 @@ published_findings:
 qualifying_evidence: []
 references: []
 schema_version: v0.1
-title: 'mailbox_network multi-agent pattern (peer-to-peer agents, agent network)'
+title: 'When to use the mailbox_network multi-agent pattern (peer-to-peer agents, agent network)?'
 unmet_executor_requirements:
   - concurrent_role_invocations
   - agent_to_agent_messages
 ---
 
-# mailbox_network
+# When to use the mailbox_network multi-agent pattern (peer-to-peer agents, agent network)?
+
+**Short answer:** test it only when a common channel has grown too large to scan and most traffic concerns two participants; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/mailbox_network/findings.md) keep the unfavourable ones.
 
 The `mailbox_network` multi-agent pattern (family `shared_state`): agents address each other through per-agent mailboxes instead of one open board.
 
 Also called: peer-to-peer agents, agent network, direct agent messaging, network of agents (LangGraph).
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -126,8 +126,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when a common channel has grown too large to scan and most traffic concerns two participants. The record below reports this is how mailboxes appeared there.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

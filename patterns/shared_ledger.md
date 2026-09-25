@@ -49,19 +49,19 @@ published_findings:
 qualifying_evidence: []
 references: []
 schema_version: v0.1
-title: 'shared_ledger multi-agent pattern (append-only log coordination, shared task log)'
+title: 'When to use the shared_ledger multi-agent pattern (append-only log coordination, shared task log)?'
 unmet_executor_requirements:
   - concurrent_role_invocations
   - shared_writable_state_between_agents
 ---
 
-# shared_ledger
+# When to use the shared_ledger multi-agent pattern (append-only log coordination, shared task log)?
+
+**Short answer:** when the task outlasts one context window or session, start with [successor_handoff](/patterns/successor_handoff.md) and consider it next. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/shared_ledger/findings.md) keep the unfavourable ones.
 
 The `shared_ledger` multi-agent pattern (family `shared_state`): agents append to a common ordered log and read it to learn what already happened.
 
 Also called: append-only log coordination, shared task log, event log coordination, progress ledger.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -73,8 +73,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when the expensive thing is not doing the work but knowing what has already been done or claimed.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

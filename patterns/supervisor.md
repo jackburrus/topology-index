@@ -95,19 +95,19 @@ references:
   - https://www.anthropic.com/engineering/multi-agent-research-system
   - https://arxiv.org/abs/2308.08155
 schema_version: v0.1
-title: 'supervisor multi-agent pattern (orchestrator-worker, orchestrator-workers)'
+title: 'When to use the supervisor multi-agent pattern (orchestrator-worker, orchestrator-workers)?'
 unmet_executor_requirements:
   - agent_to_agent_messages
   - routing_on_unmeasured_conditions
 ---
 
-# supervisor
+# When to use the supervisor multi-agent pattern (orchestrator-worker, orchestrator-workers)?
+
+**Short answer:** start with it when the task has subtasks unknown until it starts; avoid it when a fixed plan would do. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/supervisor/findings.md) keep the unfavourable ones.
 
 The `supervisor` multi-agent pattern (family `hierarchy`): one controlling role directs subordinate workers and decides what happens next.
 
 Also called: orchestrator-worker (Anthropic), orchestrator-workers, supervisor agent (LangGraph), manager agent, hierarchical process (CrewAI), lead agent with subagents.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -119,8 +119,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when the work needs one place that holds the plan, and the workers can be narrower and cheaper than the role directing them.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

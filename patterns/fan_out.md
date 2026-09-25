@@ -100,19 +100,19 @@ references:
   - https://arxiv.org/abs/2203.11171
   - https://arxiv.org/abs/2402.05120
 schema_version: v0.1
-title: 'fan_out multi-agent pattern (best-of-N sampling, parallel attempts)'
+title: 'When to use the fan_out multi-agent pattern (best-of-N sampling, parallel attempts)?'
 unmet_executor_requirements:
   - concurrent_role_invocations
   - aggregation_over_agent_opinions
 ---
 
-# fan_out
+# When to use the fan_out multi-agent pattern (best-of-N sampling, parallel attempts)?
+
+**Short answer:** start with it when the task often fails, but attempts vary; avoid it when nothing can cheaply pick the winning attempt. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/fan_out/findings.md) keep the unfavourable ones.
 
 The `fan_out` multi-agent pattern (family `parallelism`): several workers attempt the same task at once and one result is selected.
 
 Also called: best-of-N sampling, parallel attempts, self-consistency, parallelization by voting (Anthropic).
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -124,8 +124,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when attempts vary a lot, a single attempt often fails, and something outside the workers can decide cheaply which attempt is good.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

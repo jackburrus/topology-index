@@ -94,18 +94,18 @@ references:
   - https://arxiv.org/abs/2406.04692
   - https://arxiv.org/abs/2404.18796
 schema_version: v0.1
-title: 'council multi-agent pattern (LLM-as-a-judge panel, jury of models)'
+title: 'When to use the council multi-agent pattern (LLM-as-a-judge panel, jury of models)?'
 unmet_executor_requirements:
   - aggregation_over_agent_opinions
 ---
 
-# council
+# When to use the council multi-agent pattern (LLM-as-a-judge panel, jury of models)?
+
+**Short answer:** when the task needs several rounds of criticism, start with [critic_loop](/patterns/critic_loop.md) and consider it next; when the task often fails, but attempts vary, start with [fan_out](/patterns/fan_out.md) and consider it next. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/council/findings.md) keep the unfavourable ones.
 
 The `council` multi-agent pattern (family `verification`): several reviewers judge the same work and their verdicts are combined into one.
 
 Also called: LLM-as-a-judge panel, jury of models, ensemble review, mixture-of-agents, majority vote review.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -117,8 +117,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when reviewer mistakes are uncorrelated, so combining verdicts cancels some of them.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

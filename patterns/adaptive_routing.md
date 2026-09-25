@@ -64,18 +64,18 @@ references:
   - https://www.anthropic.com/engineering/building-effective-agents
   - https://openai.github.io/openai-agents-python/handoffs/
 schema_version: v0.1
-title: 'adaptive_routing multi-agent pattern (router, routing)'
+title: 'When to use the adaptive_routing multi-agent pattern (router, routing)?'
 unmet_executor_requirements:
   - routing_on_unmeasured_conditions
 ---
 
-# adaptive_routing
+# When to use the adaptive_routing multi-agent pattern (router, routing)?
+
+**Short answer:** start with it when the task needs a different specialist per input; avoid it when the routing condition is not observable. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/adaptive_routing/findings.md) keep the unfavourable ones.
 
 The `adaptive_routing` multi-agent pattern (family `adaptive`): which role runs next is chosen during the run from conditions seen in the run.
 
 Also called: router, routing (Anthropic), conditional routing, conditional edges (LangGraph), handoffs (OpenAI Agents SDK), triage agent.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -87,8 +87,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when different tasks need different sequences and the distinguishing condition is observable cheaply and early.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

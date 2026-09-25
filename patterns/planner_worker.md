@@ -113,17 +113,17 @@ references:
   - https://arxiv.org/abs/2305.04091
   - https://arxiv.org/abs/2308.00352
 schema_version: v0.1
-title: 'planner_worker multi-agent pattern (planner-executor, plan-and-execute)'
+title: 'When to use the planner_worker multi-agent pattern (planner-executor, plan-and-execute)?'
 unmet_executor_requirements: []
 ---
 
-# planner_worker
+# When to use the planner_worker multi-agent pattern (planner-executor, plan-and-execute)?
+
+**Short answer:** start with it when the task needs a plan before editing; avoid it when the plan cannot be written without touching the work. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/planner_worker/findings.md) keep the unfavourable ones.
 
 The `planner_worker` multi-agent pattern (family `hierarchy`): a planning role produces a plan, then a separate working role carries it out.
 
 Also called: planner-executor, plan-and-execute, plan-then-act, architect-editor.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -135,8 +135,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when planning and editing reward different instructions or different model bindings, and planning is cheap next to the work.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

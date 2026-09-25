@@ -250,10 +250,13 @@ published_findings:
     url: https://www.anthropic.com/engineering/building-effective-agents
 research_index: /research/index.md
 schema_version: v0.1
-title: 'Multi-agent topology patterns: definitions, aliases and how to choose'
+title: 'Which multi-agent pattern should I use? Definitions, aliases and a decision guide'
 ---
 
-# Multi-agent topology patterns
+# Which multi-agent pattern should I use?
+
+**Short answer:** start with [single_agent](/patterns/single_agent.md) when the task is small, or has one clear owner, and avoid it when the task clearly exceeds one context window. Any other task starts by its shape in the table below.
+Hypotheses to test, not a ranking; the general findings below keep the unfavourable ones.
 
 A catalogue of the orchestration patterns LLM agents are organized into: orchestrator-worker
 supervisors, planner-executor pairs, evaluator-optimizer critic loops, map-reduce, fan-out,

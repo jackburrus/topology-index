@@ -75,17 +75,17 @@ qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/building-effective-agents
 schema_version: v0.1
-title: 'implement_review multi-agent pattern (maker-checker, coder-reviewer)'
+title: 'When to use the implement_review multi-agent pattern (maker-checker, coder-reviewer)?'
 unmet_executor_requirements: []
 ---
 
-# implement_review
+# When to use the implement_review multi-agent pattern (maker-checker, coder-reviewer)?
+
+**Short answer:** start with it when the task is easier to check than to do; avoid it when nothing outside the roles can validate the result. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/implement_review/findings.md) keep the unfavourable ones.
 
 The `implement_review` multi-agent pattern (family `verification`): an implementing role hands work to a review-only role within a bounded cycle.
 
 Also called: maker-checker, coder-reviewer, generate-and-review, LLM-as-reviewer, author-reviewer.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -97,8 +97,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when mistakes are easier to spot than to avoid, and a reviewer that cannot write cannot quietly paper over what it finds.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

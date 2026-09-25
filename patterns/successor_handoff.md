@@ -63,18 +63,18 @@ published_findings:
 qualifying_evidence: []
 references: []
 schema_version: v0.1
-title: 'successor_handoff multi-agent pattern (context handoff, session handover)'
+title: 'When to use the successor_handoff multi-agent pattern (context handoff, session handover)?'
 unmet_executor_requirements:
   - context_carried_between_episodes
 ---
 
-# successor_handoff
+# When to use the successor_handoff multi-agent pattern (context handoff, session handover)?
+
+**Short answer:** start with it when the task outlasts one context window or session; avoid it when rediscovery is cheaper than a handover. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/successor_handoff/findings.md) keep the unfavourable ones.
 
 The `successor_handoff` multi-agent pattern (family `continuity`): an agent hands its accumulated context to a later agent that continues the work.
 
 Also called: context handoff, session handover, relay agents, long-running agent continuation.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -86,8 +86,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when work outlasts one context window or one sandbox, and rediscovery costs more than writing the handover.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

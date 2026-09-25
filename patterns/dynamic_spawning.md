@@ -70,19 +70,19 @@ qualifying_evidence: []
 references:
   - https://www.anthropic.com/engineering/multi-agent-research-system
 schema_version: v0.1
-title: 'dynamic_spawning multi-agent pattern (dynamic subagents, spawn-on-demand workers)'
+title: 'When to use the dynamic_spawning multi-agent pattern (dynamic subagents, spawn-on-demand workers)?'
 unmet_executor_requirements:
   - role_creation_at_runtime
   - concurrent_role_invocations
 ---
 
-# dynamic_spawning
+# When to use the dynamic_spawning multi-agent pattern (dynamic subagents, spawn-on-demand workers)?
+
+**Short answer:** when the task has subtasks unknown until it starts, start with [supervisor](/patterns/supervisor.md) and consider it next. A hypothesis from the [decision guide](/patterns/index.md), not a ranking; [published findings](/patterns/dynamic_spawning/findings.md) keep the unfavourable ones.
 
 The `dynamic_spawning` multi-agent pattern (family `adaptive`): new workers are created during the run in response to what the run finds.
 
 Also called: dynamic subagents, spawn-on-demand workers, runtime agent creation, subagent spawning.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -94,8 +94,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when the shape of the work is unknown until it starts, so a fixed role set is either wasteful or too small.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

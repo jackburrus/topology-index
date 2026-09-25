@@ -63,20 +63,20 @@ published_findings:
 qualifying_evidence: []
 references: []
 schema_version: v0.1
-title: 'coordinator_election multi-agent pattern (leader election, elected coordinator)'
+title: 'When to use the coordinator_election multi-agent pattern (leader election, elected coordinator)?'
 unmet_executor_requirements:
   - authority_election_at_runtime
   - agent_to_agent_messages
   - concurrent_role_invocations
 ---
 
-# coordinator_election
+# When to use the coordinator_election multi-agent pattern (leader election, elected coordinator)?
+
+**Short answer:** test it only when no authority can be assigned in advance and the participants outlive any one coordinator; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/coordinator_election/findings.md) keep the unfavourable ones.
 
 The `coordinator_election` multi-agent pattern (family `adaptive`): the participants decide among themselves which of them coordinates.
 
 Also called: leader election, elected coordinator, emergent leadership.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -88,8 +88,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when no authority can be assigned in advance and the participants outlive any one coordinator.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

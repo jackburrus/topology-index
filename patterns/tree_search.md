@@ -83,19 +83,19 @@ references:
   - https://arxiv.org/abs/2310.04406
   - https://arxiv.org/abs/2407.01476
 schema_version: v0.1
-title: 'tree_search multi-agent pattern (Language Agent Tree Search, LATS)'
+title: 'When to use the tree_search multi-agent pattern (Language Agent Tree Search, LATS)?'
 unmet_executor_requirements:
   - routing_on_unmeasured_conditions
   - aggregation_over_agent_opinions
 ---
 
-# tree_search
+# When to use the tree_search multi-agent pattern (Language Agent Tree Search, LATS)?
+
+**Short answer:** test it only when early decisions matter, a wrong turn can be recognised before the end, and the environment can be put back into an earlier state; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/tree_search/findings.md) keep the unfavourable ones.
 
 The `tree_search` multi-agent pattern (family `adaptive`): partial attempts branch into a tree, an evaluator scores the branches, and the most promising one is extended next.
 
 Also called: Language Agent Tree Search, LATS, Monte Carlo tree search agent, best-first tree search, Tree of Thoughts, beam search over reasoning steps.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -107,8 +107,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when early decisions matter, a wrong turn can be recognised before the end, and the environment can be put back into an earlier state.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

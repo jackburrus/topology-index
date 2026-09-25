@@ -96,19 +96,19 @@ qualifying_evidence: []
 references:
   - https://arxiv.org/abs/2308.00352
 schema_version: v0.1
-title: 'hierarchical_delegation multi-agent pattern (hierarchical agents, hierarchical multi-agent system)'
+title: 'When to use the hierarchical_delegation multi-agent pattern (hierarchical agents, hierarchical multi-agent system)?'
 unmet_executor_requirements:
   - agent_to_agent_messages
   - role_creation_at_runtime
 ---
 
-# hierarchical_delegation
+# When to use the hierarchical_delegation multi-agent pattern (hierarchical agents, hierarchical multi-agent system)?
+
+**Short answer:** test it only when work decomposes recursively and each level can state an acceptance condition for the level below it; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/hierarchical_delegation/findings.md) keep the unfavourable ones.
 
 The `hierarchical_delegation` multi-agent pattern (family `hierarchy`): work is delegated down several levels: assignees become assigners.
 
 Also called: hierarchical agents, hierarchical multi-agent system, recursive delegation, hierarchical teams (LangGraph).
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -120,8 +120,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when work decomposes recursively and each level can state an acceptance condition for the level below it.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

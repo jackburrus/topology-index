@@ -65,17 +65,17 @@ references:
   - https://arxiv.org/abs/2308.00352
   - https://arxiv.org/abs/2307.07924
 schema_version: v0.1
-title: 'role_pipeline multi-agent pattern (prompt chaining, assembly line)'
+title: 'When to use the role_pipeline multi-agent pattern (prompt chaining, assembly line)?'
 unmet_executor_requirements: []
 ---
 
-# role_pipeline
+# When to use the role_pipeline multi-agent pattern (prompt chaining, assembly line)?
+
+**Short answer:** test it only when the work has a known sequence of stages that reward different instructions, and each stage can leave an artifact the next one can start from; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/role_pipeline/findings.md) keep the unfavourable ones.
 
 The `role_pipeline` multi-agent pattern (family `hierarchy`): a fixed sequence of roles, each working from what the role before it produced.
 
 Also called: prompt chaining (Anthropic), assembly line (MetaGPT), chat chain (ChatDev), sequential process (CrewAI), sequential agents, waterfall of role agents.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -87,8 +87,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when the work has a known sequence of stages that reward different instructions, and each stage can leave an artifact the next one can start from.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 

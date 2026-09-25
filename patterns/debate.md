@@ -88,19 +88,19 @@ references:
   - https://arxiv.org/abs/2305.14325
   - https://arxiv.org/abs/2305.19118
 schema_version: v0.1
-title: 'debate multi-agent pattern (multi-agent debate, adversarial debate)'
+title: 'When to use the debate multi-agent pattern (multi-agent debate, adversarial debate)?'
 unmet_executor_requirements:
   - agent_to_agent_messages
   - aggregation_over_agent_opinions
 ---
 
-# debate
+# When to use the debate multi-agent pattern (multi-agent debate, adversarial debate)?
+
+**Short answer:** test it only when disagreement surfaces something neither side would volunteer, and the judge can tell a sound argument from a persuasive one; otherwise start from the [decision guide](/patterns/index.md) row for your task. A hypothesis, not a ranking; [published findings](/patterns/debate/findings.md) keep the unfavourable ones.
 
 The `debate` multi-agent pattern (family `verification`): agents argue opposing positions and a separate judge decides the outcome.
 
 Also called: multi-agent debate, adversarial debate, debate with a judge.
-
-Part of the [pattern catalogue](/patterns/index.md), which includes a guide to choosing one.
 
 ## The arrangement
 
@@ -112,8 +112,7 @@ Part of the [pattern catalogue](/patterns/index.md), which includes a guide to c
 
 Hypothesised to fit when disagreement surfaces something neither side would volunteer, and the judge can tell a sound argument from a persuasive one.
 
-That is a hypothesis about where the arrangement might help, written so it can be tested on a
-workload. It is not a finding, and this service has not tested it.
+A hypothesis to test on a workload, not a finding: this service has not tested it.
 
 ## Failure modes to watch for
 
