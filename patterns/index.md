@@ -34,7 +34,8 @@ choosing:
     if_the_task: 'needs several rounds of criticism'
     shape: needs_rounds_of_criticism
     start_with: critic_loop
-    starters: []
+    starters:
+      - /starters/reasoning-critic-loop/0.1.0.md
   - avoid_when: 'the parts depend on each other'
     common_in:
       - research
@@ -56,7 +57,8 @@ choosing:
     if_the_task: 'often fails, but attempts vary'
     shape: fails_often_attempts_vary
     start_with: fan_out
-    starters: []
+    starters:
+      - /starters/evaluation-fan-out/0.1.0.md
   - avoid_when: 'the plan cannot be written without touching the work'
     common_in:
       - coding
@@ -87,7 +89,8 @@ choosing:
     if_the_task: 'needs a different specialist per input'
     shape: specialist_per_input
     start_with: adaptive_routing
-    starters: []
+    starters:
+      - /starters/operations-specialist-router/0.1.0.md
   - avoid_when: 'rediscovery is cheaper than a handover'
     common_in:
       - coding
@@ -99,7 +102,8 @@ choosing:
     if_the_task: 'outlasts one context window or session'
     shape: outlasts_one_context
     start_with: successor_handoff
-    starters: []
+    starters:
+      - /starters/documents-successor-handoff/0.1.0.md
 contributing:
   guide: /docs/api/contributing.md
   status: limited_rollout

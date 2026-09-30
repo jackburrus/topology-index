@@ -112,6 +112,62 @@ starters:
     topology: custom
     topology_id: plan_then_audit
     version: '0.1.0'
+  - name: reasoning-critic-loop
+    path: /starters/reasoning-critic-loop/0.1.0.md
+    pattern_paths:
+      - /patterns/critic_loop.md
+    patterns:
+      - critic_loop
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - reasoning.proof_review
+    topology: custom
+    topology_id: bounded_critic_loop
+    version: '0.1.0'
+  - name: evaluation-fan-out
+    path: /starters/evaluation-fan-out/0.1.0.md
+    pattern_paths:
+      - /patterns/fan_out.md
+    patterns:
+      - fan_out
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - evaluation.rubric_judgment
+    topology: custom
+    topology_id: parallel_attempts_with_selector
+    version: '0.1.0'
+  - name: operations-specialist-router
+    path: /starters/operations-specialist-router/0.1.0.md
+    pattern_paths:
+      - /patterns/adaptive_routing.md
+    patterns:
+      - adaptive_routing
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - operations.tool_workflow
+    topology: custom
+    topology_id: specialist_router
+    version: '0.1.0'
+  - name: documents-successor-handoff
+    path: /starters/documents-successor-handoff/0.1.0.md
+    pattern_paths:
+      - /patterns/successor_handoff.md
+    patterns:
+      - successor_handoff
+    provenance: synthetic
+    research_record: null
+    status: unvalidated
+    task_classes:
+      - documents.long_document_review
+    topology: custom
+    topology_id: context_successor_handoff
+    version: '0.1.0'
 vocabulary:
   candidates:
     - id: board_coordinated_collective
@@ -173,6 +229,22 @@ any recommendation. Each document labels its own provenance and status under the
   Provenance `synthetic`, status `unvalidated`, topology `custom`.
   Patterns: `planner_worker`
   Task classes: `security.code_audit`
+- [reasoning-critic-loop](/starters/reasoning-critic-loop/0.1.0.md): An author and a critic pass a proof or derivation back and forth until the bounded review cycle produces a checked draft.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `critic_loop`
+  Task classes: `reasoning.proof_review`
+- [evaluation-fan-out](/starters/evaluation-fan-out/0.1.0.md): Independent attempts answer a difficult evaluation question, and a selector applies the declared rubric to choose one result.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `fan_out`
+  Task classes: `evaluation.rubric_judgment`
+- [operations-specialist-router](/starters/operations-specialist-router/0.1.0.md): A router classifies each incoming operation and hands it to the specialist with the matching tool or procedure.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `adaptive_routing`
+  Task classes: `operations.tool_workflow`
+- [documents-successor-handoff](/starters/documents-successor-handoff/0.1.0.md): A predecessor reads and organizes a long document set, then a successor continues from a structured handover dossier.
+  Provenance `synthetic`, status `unvalidated`, topology `custom`.
+  Patterns: `successor_handoff`
+  Task classes: `documents.long_document_review`
 
 ## Topology vocabulary
 

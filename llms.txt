@@ -90,6 +90,10 @@ The same rows are the `choosing` frontmatter of [/patterns/index.md](/patterns/i
 - [research-split-and-combine](/starters/research-split-and-combine/0.1.0.md): A splitter divides a broad research question into independent parts, researchers work the parts at the same time, and a combiner writes one sourced answer.
 - [research-supervised-investigation](/starters/research-supervised-investigation/0.1.0.md): A lead holds the question and the running findings, and sends a researcher after one lead at a time until the answer is supported.
 - [security-planned-audit](/starters/security-planned-audit/0.1.0.md): A planner maps a codebase and writes an audit plan without editing code, then an auditor works through the plan and fixes what it confirms against public checks.
+- [reasoning-critic-loop](/starters/reasoning-critic-loop/0.1.0.md): An author and a critic pass a proof or derivation back and forth until the bounded review cycle produces a checked draft.
+- [evaluation-fan-out](/starters/evaluation-fan-out/0.1.0.md): Independent attempts answer a difficult evaluation question, and a selector applies the declared rubric to choose one result.
+- [operations-specialist-router](/starters/operations-specialist-router/0.1.0.md): A router classifies each incoming operation and hands it to the specialist with the matching tool or procedure.
+- [documents-successor-handoff](/starters/documents-successor-handoff/0.1.0.md): A predecessor reads and organizes a long document set, then a successor continues from a structured handover dossier.
 
 ## Optional
 
