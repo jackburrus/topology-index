@@ -43,8 +43,9 @@ identifier or alias) and `list_starters` (optionally for one task class), and ev
 the HTTP route returns; `list_patterns` without a family or domain and a search without a
 match return the same rows as the `choosing` frontmatter of `/patterns/index.md`. Start with
 `list_patterns` or
-`search`. The one write, `report_outcome`, only accepts a use ticket; see the limited
-rollout below.
+`search`. The one write, `report_outcome`, accepts a ticket from a content-bearing
+content read and a short `worked`, `partly` or `did_not_work` answer; pattern and starter
+redemptions return indexed follow-up material when available. See the limited rollout below.
 
 Claude Code:
 
