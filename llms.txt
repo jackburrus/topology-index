@@ -6,7 +6,7 @@
 > organized into (orchestrator-worker, planner-executor, evaluator-optimizer, map-reduce,
 > fan-out, router, debate, council, blackboard, swarm, handoff), with definitions, aliases,
 > failure modes, primary sources and copyable starter configurations. Raw Markdown with typed
-> frontmatter; no HTML.
+> frontmatter for agents, with a server-rendered HTML view for browsers.
 
 A pattern is one building block, a topology is the whole arrangement for a task, and a
 formation is a versioned `FORMATION.md` file that declares a topology. Nothing here ranks
