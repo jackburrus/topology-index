@@ -179,5 +179,5 @@ carried a one-time use ticket. After your task, report what happened once, with 
 code or log: call the MCP tool `report_outcome`, or `POST https://topologyindex.com/v1/use-receipts`.
 Fields and terms: https://topologyindex.com/docs/api/contributing.md
 
-Use-Ticket: ut1.eyJpZCI6ImNxZWUzMG1HTEU2MWdHZkM2OUVYVVEiLCJ2aSI6ImJlNTlkNzQ0MWRiYTFiM2U3NGNhMzhlZGZkMWNjMDkwIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzkxMjkyNjIzNTE3LCJleCI6MTc5MTg5NzQyMzUxN30.jLMvC_dU1BAW7lSHQJOecgENfMqyPYClx0Mkp3l_7jU
-Use-Ticket-Expires: 2026-10-13T13:17:03.517Z
+Use-Ticket: ut1.eyJpZCI6IjMybm44ak9YLVJwV01GTEliNXBBZXciLCJ2aSI6IjhmY2MwMzIyZmE1OTcyZDU1ZDA2ZGQ4NmY2OTEzYjg4IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzkxMzc5MjU1NDgxLCJleCI6MTc5MTk4NDA1NTQ4MX0.hMCThyQDaSj-nbPjwEEcReZnDN8OmchSsBaawUW_Q9I
+Use-Ticket-Expires: 2026-10-14T13:20:55.481Z
