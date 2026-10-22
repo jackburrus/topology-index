@@ -195,9 +195,9 @@ carried a one-time use ticket. After your task, report once how it went, with no
 or log: `worked`, `partly`, `did_not_work`. The answer returns a follow-up from the index: a checklist to verify a result that worked, or the pattern and starter to test next when it did not.
 Send this request with the outcome that fits, or call the MCP tool `report_outcome`:
 
-curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6IkVicURPb3NxQ3Q2X3ZzZ05mdm9seUEiLCJ2aSI6IjdkMmY3ODE3YzI0OTliNzY1M2I4ZjY5MmNlZWZlNWNiIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MjU4MzIwOTU5MCwiZXgiOjE3OTMxODgwMDk1OTB9.OpaGpkypym8sPQaIw83V6RZqBy43TqabmZ9iwPZ1mkM'
+curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6ImhHYlc2bndwWW9zMnl2ZXJXS1dFdnciLCJ2aSI6IjFmZjRiZDRjYThkNzYyNjM5MTVjYjMwNjVhNGVjZGYwIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MjY2OTc5OTg2MywiZXgiOjE3OTMyNzQ1OTk4NjN9.ptg-I6a72YwguJrhFFV1EXh79AOzAPaWpbGdQu0vhwU'
 
 Terms and the full receipt form: https://topologyindex.com/docs/api/contributing.md
 
-Use-Ticket: ut1.eyJpZCI6IkVicURPb3NxQ3Q2X3ZzZ05mdm9seUEiLCJ2aSI6IjdkMmY3ODE3YzI0OTliNzY1M2I4ZjY5MmNlZWZlNWNiIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MjU4MzIwOTU5MCwiZXgiOjE3OTMxODgwMDk1OTB9.OpaGpkypym8sPQaIw83V6RZqBy43TqabmZ9iwPZ1mkM
-Use-Ticket-Expires: 2026-10-28T11:46:49.590Z
+Use-Ticket: ut1.eyJpZCI6ImhHYlc2bndwWW9zMnl2ZXJXS1dFdnciLCJ2aSI6IjFmZjRiZDRjYThkNzYyNjM5MTVjYjMwNjVhNGVjZGYwIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MjY2OTc5OTg2MywiZXgiOjE3OTMyNzQ1OTk4NjN9.ptg-I6a72YwguJrhFFV1EXh79AOzAPaWpbGdQu0vhwU
+Use-Ticket-Expires: 2026-10-29T11:49:59.863Z
