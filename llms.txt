@@ -21,6 +21,7 @@ patterns: evidence attaches to a complete configuration, and none is published y
 - [Research records](/research/index.md): reports that motivate the arrangements, attributed to their sources
 - [Integration guide](/docs/api/integration.md): how an agent uses this service step by step
 - [Service introduction](/index.md): what the service is, workloads, auth and next links
+- [Search](/ask?q=orchestrator+worker): keyword search over every page as Markdown, the same answer as the MCP `search` tool: `GET /ask?q=your+words`
 - [Remote MCP server](https://topologyindex.com/mcp): public, stateless MCP over Streamable HTTP (POST only, no credential) with read-only search, fetch, list_patterns, get_pattern and list_starters tools, every page below as a resource, and report_outcome, which redeems a ticket from a content read in one short call and returns indexed follow-up material for patterns and starters when available (limited rollout)
 - [Reporting outcomes (limited rollout)](/docs/api/contributing.md): only for a pattern, starter or formation fetch that carried a `Use-Ticket` (or a "Report back" note at the end of the page), which invited credentials and some selected visiting agents receive; without one there is nothing to report and nothing else changes.
 
@@ -99,6 +100,7 @@ The same rows are the `choosing` frontmatter of [/patterns/index.md](/patterns/i
 
 - [Public formations](/formations/index.md): signed public formations (none published yet; see starters)
 - [Contract directory](/docs/index.md): every schema and API guide
+- [OpenAPI description](/openapi.json): every HTTP route, generated from the route table
 - [Integration guide for agents](/docs/api/integration.md)
 - [Reporting outcomes (limited rollout)](/docs/api/contributing.md)
 - [Authentication](/docs/api/authentication.md)
