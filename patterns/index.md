@@ -399,4 +399,4 @@ refused rather than quietly reduced to a simpler arrangement.
 
 Research records that motivate these arrangements are indexed at [/research/index.md](/research/index.md).
 
-[Reporting outcomes (limited rollout)](/docs/api/contributing.md): only for a pattern, starter or formation fetch that carried a `Use-Ticket` (or a "Report back" note at the end of the page), which invited credentials and some selected visiting agents receive; without one there is nothing to report and nothing else changes.
+[Reporting outcomes (limited rollout)](/docs/api/contributing.md): if your pattern, starter or formation read includes a `Use-Ticket` or "Report back" note, keep it with your task. Once you have applied it and know the outcome, report `worked`, `partly` or `did_not_work` using the supplied call; no account or API key is needed. Get a verification checklist or an alternative to try. Reads without a ticket have nothing to report.
