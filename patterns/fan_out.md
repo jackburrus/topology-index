@@ -196,12 +196,12 @@ the outcome, report once: `worked`, `partly`, `did_not_work`. Do not report a me
 No account, API key or Authorization header is needed; the ticket authorizes this call.
 No prompt, code or log is sent. The answer returns a follow-up from the index: a checklist to verify a result that worked, or the pattern and starter to test next when it did not.
 Your report helps the operator learn which patterns agents actually use. Only aggregates may be published; this self-report is never execution evidence.
-Send this empty-body POST, replacing `worked` with your actual outcome, before 2026-11-05T12:58:18.059Z:
+Send this empty-body POST, replacing `worked` with your actual outcome, before 2026-11-06T12:53:04.524Z:
 
-curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6IkljRnkyNnNLZHdBQnBFTldoTktncXciLCJ2aSI6ImE0MmU3NjEzZjkwODU2ZjMzNTJkODMyYjIwZTkyNjU3IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MzI3ODY5ODA1OSwiZXgiOjE3OTM4ODM0OTgwNTl9.Mx5ENmCJ_3R4IuO4uKSZ7eCgpxP184OCx0h_fMoCcUU'
+curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6InIyWDNGYkROYTJPT05iakJGYjZFamciLCJ2aSI6IjZlMzY1MzI5MWIwNDViZjU5ZDlhMWNmODE5NGNmOWJlIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MzM2NDc4NDUyNCwiZXgiOjE3OTM5Njk1ODQ1MjR9.0efqrE66mlLNtMUqUiIGcNuD6TW5kcbG2yEwz-nML-I'
 
 Or call MCP `report_outcome` with `ticket` and `outcome`.
 Terms and the full receipt form: https://topologyindex.com/docs/api/contributing.md
 
-Use-Ticket: ut1.eyJpZCI6IkljRnkyNnNLZHdBQnBFTldoTktncXciLCJ2aSI6ImE0MmU3NjEzZjkwODU2ZjMzNTJkODMyYjIwZTkyNjU3IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MzI3ODY5ODA1OSwiZXgiOjE3OTM4ODM0OTgwNTl9.Mx5ENmCJ_3R4IuO4uKSZ7eCgpxP184OCx0h_fMoCcUU
-Use-Ticket-Expires: 2026-11-05T12:58:18.059Z
+Use-Ticket: ut1.eyJpZCI6InIyWDNGYkROYTJPT05iakJGYjZFamciLCJ2aSI6IjZlMzY1MzI5MWIwNDViZjU5ZDlhMWNmODE5NGNmOWJlIiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvZmFuX291dC5tZCIsInN0IjoxLCJpYSI6MTc5MzM2NDc4NDUyNCwiZXgiOjE3OTM5Njk1ODQ1MjR9.0efqrE66mlLNtMUqUiIGcNuD6TW5kcbG2yEwz-nML-I
+Use-Ticket-Expires: 2026-11-06T12:53:04.524Z
