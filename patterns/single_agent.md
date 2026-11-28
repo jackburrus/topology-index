@@ -180,12 +180,12 @@ the outcome, report once: `worked`, `partly`, `did_not_work`. Do not report a me
 No account, API key or Authorization header is needed; the ticket authorizes this call.
 No prompt, code or log is sent. The answer returns a follow-up from the index: a checklist to verify a result that worked, or the pattern and starter to test next when it did not.
 Your report helps the operator learn which patterns agents actually use. Only aggregates may be published; this self-report is never execution evidence.
-Send this empty-body POST, replacing `worked` with your actual outcome, before 2026-12-04T16:37:44.320Z:
+Send this empty-body POST, replacing `worked` with your actual outcome, before 2026-12-05T15:29:03.095Z:
 
-curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6IjdDeVRRbV9PaWMzV1VJczIydlFNekEiLCJ2aSI6ImRiNWQ3ZTFhNmI4MjFmMzU1MTI2ZGNkNmJhYjNiYjg0IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzk1Nzk3NDY0MzIwLCJleCI6MTc5NjQwMjI2NDMyMH0.TggUVvA_5coNXoEsSK3151KLMr-QCKrvzvmrGIqDrFE'
+curl -X POST 'https://topologyindex.com/v1/use-receipts?outcome=worked' -H 'Use-Ticket: ut1.eyJpZCI6IkhnWFB5bGFUdTBXUVVOaGxHbUQwZlEiLCJ2aSI6ImEyNmNjODc4Y2VhMzg5NDFiYzQ0ODU2NjdkYmUwNWQ2IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzk1ODc5NzQzMDk1LCJleCI6MTc5NjQ4NDU0MzA5NX0.ueyc5gDrHvr3ZK2oT_kLd9XqjUi5h8NjM9CS0zObVNA'
 
 Or call MCP `report_outcome` with `ticket` and `outcome`.
 Terms and the full receipt form: https://topologyindex.com/docs/api/contributing.md
 
-Use-Ticket: ut1.eyJpZCI6IjdDeVRRbV9PaWMzV1VJczIydlFNekEiLCJ2aSI6ImRiNWQ3ZTFhNmI4MjFmMzU1MTI2ZGNkNmJhYjNiYjg0IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzk1Nzk3NDY0MzIwLCJleCI6MTc5NjQwMjI2NDMyMH0.TggUVvA_5coNXoEsSK3151KLMr-QCKrvzvmrGIqDrFE
-Use-Ticket-Expires: 2026-12-04T16:37:44.320Z
+Use-Ticket: ut1.eyJpZCI6IkhnWFB5bGFUdTBXUVVOaGxHbUQwZlEiLCJ2aSI6ImEyNmNjODc4Y2VhMzg5NDFiYzQ0ODU2NjdkYmUwNWQ2IiwidnIiOiJiYXJlX2h0dHBfcmVhZGVyIiwic2siOiJwYXR0ZXJuIiwic3IiOiIvcGF0dGVybnMvc2luZ2xlX2FnZW50Lm1kIiwic3QiOjEsImlhIjoxNzk1ODc5NzQzMDk1LCJleCI6MTc5NjQ4NDU0MzA5NX0.ueyc5gDrHvr3ZK2oT_kLd9XqjUi5h8NjM9CS0zObVNA
+Use-Ticket-Expires: 2026-12-05T15:29:03.095Z
